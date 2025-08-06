@@ -1,5 +1,5 @@
 ---
-applyTo: "**"
+applyTo: "Generate Docs"
 ---
 # Instruções para o Copilot
 Always generate docstrings in the format of Formal Documentation, in the language of portuguese (Brazil). 
