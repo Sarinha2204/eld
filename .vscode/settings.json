@@ -3,5 +3,12 @@
         {
             "file": ".github/copilot-instructions.md"
         }
+    ],
+    "docwriter.style": "Google",
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    "github.copilot.chat.reviewSelection.instructions": [
+        {
+            "file": ".github/copilot-instructions.md"
+        }
     ]
 }

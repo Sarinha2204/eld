@@ -1,39 +1,4 @@
-﻿/*
-================================================================================
-DOCUMENTATION - bz_headcount.qvs
-================================================================================
-
-This Qlik Sense script is responsible for extracting, transforming, and loading
-(ETL) various Human Resources datasets into the Bronze layer of the data lake
-for People Analytics at Eldorado Brasil.
-
---------------------------------------------------------------------------------
-GENERAL SETTINGS
---------------------------------------------------------------------------------
-- Sets locale, date, time, and number formats for Brazilian Portuguese.
-- Defines folder paths for Bronze, Silver, Gold, Manual Source, TI, and External layers.
-
---------------------------------------------------------------------------------
-DATA EXTRACTION AND LOADING
---------------------------------------------------------------------------------
-The script loads data from multiple QVD and Excel sources, processes them, and
-stores the results in the Bronze layer. Each section is responsible for a specific
-dataset, with the following main steps:
-   1. LOAD: Reads data from source files (QVD or Excel).
-   2. STORE: Saves the loaded data into the Bronze layer as QVD files.
-   3. DROP: Removes the table from memory to optimize resource usage.
-
---------------------------------------------------------------------------------
-MAIN DATASETS PROCESSED
---------------------------------------------------------------------------------
-- bz_headcount_f: Headcount data from SAP BW.
-- bz_headcount_hist_f: Historical headcount data (2014-2018) from Excel.
-- bz_headcount_latest_f: Latest headcount and salary data from SAP BW.
-- bz_pessoa_d: Person dimension data.
-- bz_hierarquia_d: Hierarchy dimension data.
-- bz_excel_funcao_d: Job function and CBO mapping from Excel.
-- bz_excel_filial_d: Branch/Filial dimension from Excel.
-- bz_excel_salario_d: Salary table/range from
+﻿
 
 
 
