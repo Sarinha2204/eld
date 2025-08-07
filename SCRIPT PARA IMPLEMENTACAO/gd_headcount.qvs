@@ -1,6 +1,228 @@
-// Documentação Técnica
-// Arquivo: gd_headcount.qvs
-// Última atualização: 07/08/2025 12:27:33
+Documentação Técnica
+Arquivo: gd_headcount.qvs
+Última atualização: 07/08/2025 13:49:31
+
+Documentação Técnica do Script QlikView: gd_headcount.qvs
+
+**1. Resumo:**
+
+O script `gd_headcount.qvs` processa dados de *headcount* (contagem de funcionários) para criar um modelo de dados para análise em QlikView.  Ele extrai dados de arquivos QVD na camada *silver*, cria e popula tabelas de dimensões e fatos, realiza a limpeza e transformação dos dados, e armazena os resultados em arquivos QVD na camada *gold*. O processo inclui a geração de tabelas auxiliares para calendário e tempo de serviço na empresa.
+
+
+**2. Principais Etapas:**
+
+* **2.1 Configurações:** Define as configurações regionais e de formatação para português (Brasil), incluindo separadores decimais e de milhares, formatos de moeda, data e hora, nomes de dias e meses, e o primeiro dia da semana. Define variáveis para os caminhos de acesso aos arquivos de dados em diferentes camadas (bronze, silver, gold), fontes externas e internas, utilizando `lib://` para indicar armazenamento na biblioteca de arquivos do Qlik.
+
+* **2.2 Criação da Tabela de Calendário:**  Cria uma tabela de dimensão (`gd_calendario_d`) contendo informações detalhadas sobre datas, como ano, mês, dia da semana, semana do ano, trimestre, semestre, e o status do período (histórico ou futuro).  A tabela é armazenada em um arquivo QVD na camada *gold*.
+
+* **2.3 Criação da Tabela de Tempo na Companhia:** Cria uma tabela de dimensão (`gd_tempo_companhia_d`) categorizando o tempo de serviço dos funcionários em grupos (baseados em faixas de tempo em meses e anos, com diferenciação entre gerencial e operacional). A tabela é salva como um QVD na camada *gold*.
+
+* **2.4 Carregamento de Dados Brutos:** Carrega dados brutos de *headcount*, demissões, orçamento histórico e posições de funcionários a partir de arquivos QVD na camada *silver*. Chaves *hash* (Hash128) são geradas para otimizar os relacionamentos entre as tabelas, utilizando diversas colunas para gerar uma chave única e otimizada para cada tabela.
+
+* **2.5 Criação de Dimensões:** Cria diversas tabelas de dimensão a partir dos dados brutos, incluindo: `gd_employee_d` (funcionários), `gd_hierarquia_d` (hierarquia organizacional), `gd_funcao_d` (funções/cargos), `gd_eldorado_entity_d` (entidades Eldorado), `gd_secao_d` (seções), `gd_centro_de_custo_d` (centros de custo), `gd_situacao_d` (situação do funcionário), `gd_status_d` (status do *headcount*), `gd_tipo_funcionario_d` (tipo de funcionário), `gd_esclada_d` (jornada e escala de trabalho), `gd_idade_d` (idade e geração do funcionário), e `gd_contratacao_tipo_d` (tipo de contratação). Todas são armazenadas em arquivos QVD na camada *gold*. A dimensão `gd_employee_d` utiliza `FirstSortedValue` para selecionar o valor mais recente de cada campo em caso de duplicatas para uma mesma pessoa.
+
+* **2.6 Criação de Fatos:** Cria tabelas de fatos consolidando informações relevantes: `gd_headcount_f` (*headcount*), `gd_termination_f` (demissões), `gd_excel_hc_orcamento_historico_f` (orçamento histórico), e `gd_posicoes_f` (posições). Campos desnecessários são removidos para otimização. As tabelas de fatos são armazenadas em arquivos QVD na camada *gold*.
+
+* **2.7 Criação de Dimensões de Demissão:** As dimensões `gd_situacao_d`, `gd_status_d` e `gd_tipo_funcionario_d` são atualizadas/concatenadas com dados específicos de demissão utilizando a instrução `Concatenate`.
+
+* **2.8 Limpeza de Dados:** Tabelas temporárias e dados brutos não mais necessários são removidos utilizando `Drop Table`.
+
+* **2.9 Armazenamento dos Resultados:** Todas as tabelas (dimensões e fatos) são armazenadas em arquivos QVD na camada *gold*.
+
+* **2.10 Finalização:** O script termina com `Exit Script`.
+
+Documentação Técnica
+Arquivo: gd_headcount.qvs
+Última atualização: 07/08/2025 13:24:57
+# Documentação Técnica do Script QlikView: gd_headcount.qvs
+
+**Última Atualização:** 06/08/2025 13:05:25 (Esta data precisa ser atualizada se o script for modificado)
+
+**1. Resumo:**
+
+O script `gd_headcount.qvs` processa e transforma dados de *headcount* (contagem de funcionários) de uma organização, preparando-os para análise em QlikView.  Ele carrega dados brutos de arquivos QVD na camada *silver*, cria e popula tabelas de dimensões e fatos, realiza a limpeza de dados e armazena os resultados em arquivos QVD na camada *gold*.  O processo inclui a geração de tabelas auxiliares de calendário e tempo de serviço na empresa.
+
+**2. Principais Etapas:**
+
+* **2.1 Configurações:** O script inicia definindo as configurações de idioma e formatação para português (Brasil), incluindo separadores decimais e de milhares, formatos de moeda, data e hora, nomes de dias e meses, e o primeiro dia da semana.  Define variáveis para os caminhos de acesso aos arquivos de dados em diferentes camadas (bronze, silver, gold), fontes externas e internas, utilizando `lib://` indicando armazenamento em biblioteca de arquivos do Qlik.
+
+* **2.2 Criação da Tabela de Calendário:** Uma tabela de dimensão (`gd_calendario_d`) é criada contendo informações detalhadas sobre datas, como ano, mês, dia da semana, semana do ano, trimestre, semestre, e o status do período (histórico ou futuro).  Esta tabela é armazenada em um arquivo QVD na camada *gold*.
+
+* **2.3 Criação da Tabela de Tempo na Companhia:** Uma tabela de dimensão (`gd_tempo_companhia_d`) é gerada, categorizando o tempo de serviço dos funcionários em grupos (baseados em faixas de tempo em meses e anos, com diferenciação entre gerencial e operacional). Esta tabela também é salva como um QVD na camada *gold*.
+
+* **2.4 Carregamento de Dados Brutos:** Dados brutos de *headcount*, demissões, orçamento histórico e posições de funcionários são carregados a partir de arquivos QVD na camada *silver*. Chaves *hash* (Hash128) são geradas para otimizar os relacionamentos entre as tabelas, utilizando diversas colunas para gerar uma chave única e otimizada para cada tabela.
+
+* **2.5 Criação de Dimensões:** Várias tabelas de dimensão são criadas a partir dos dados brutos, incluindo:
+    * `gd_employee_d` (funcionários)
+    * `gd_hierarquia_d` (hierarquia organizacional)
+    * `gd_funcao_d` (funções/cargos)
+    * `gd_eldorado_entity_d` (entidades Eldorado)
+    * `gd_secao_d` (seções)
+    * `gd_centro_de_custo_d` (centros de custo)
+    * `gd_situacao_d` (situação do funcionário)
+    * `gd_status_d` (status do *headcount*)
+    * `gd_tipo_funcionario_d` (tipo de funcionário)
+    * `gd_esclada_d` (jornada e escala de trabalho)
+    * `gd_idade_d` (idade e geração do funcionário)
+    * `gd_contratacao_tipo_d` (tipo de contratação).
+    Todas são armazenadas em arquivos QVD na camada *gold*. A dimensão `gd_employee_d` utiliza `FirstSortedValue` para selecionar o valor mais recente de cada campo em caso de duplicatas para uma mesma pessoa.
+
+* **2.6 Criação de Fatos:** Tabelas de fatos são criadas, consolidando informações relevantes:
+    * `gd_headcount_f` (*headcount*)
+    * `gd_termination_f` (demissões)
+    * `gd_excel_hc_orcamento_historico_f` (orçamento histórico)
+    * `gd_posicoes_f` (posições).
+Campos desnecessários são removidos para otimização. As tabelas de fatos são armazenadas em arquivos QVD na camada *gold*.
+
+* **2.7 Criação de Dimensões de Demissão:** As dimensões `gd_situacao_d`, `gd_status_d` e `gd_tipo_funcionario_d` são atualizadas/concatenadas com dados específicos de demissão utilizando a instrução `Concatenate`.
+
+* **2.8 Limpeza de Dados:** Tabelas temporárias e dados brutos não mais necessários são removidos utilizando `Drop Table`.
+
+* **2.9 Armazenamento dos Resultados:** Todas as tabelas (dimensões e fatos) são armazenadas em arquivos QVD na camada *gold*.
+
+* **2.10 Finalização:** O script termina com `Exit Script`.
+
+
+**Observação:** Esta documentação descreve o funcionamento do script sem fornecer sugestões ou melhorias de código. A utilização de `lib://` sugere a localização dos arquivos em um repositório centralizado do Qlik Sense ou QlikView.  As chaves Hash128 contribuem para a performance do aplicativo QlikView, especialmente em grandes volumes de dados.  A utilização de `FirstSortedValue` na criação da dimensão `gd_employee_d` garante a consistência dos dados, mas precisa de atenção quanto a ordenação utilizada `-load_date` (data decrescente) na definição de qual valor prevalecerá.
+
+Documentação Técnica
+Arquivo: gd_headcount.qvs
+Última atualização: 07/08/2025 13:11:57
+# Documentação Técnica do Script QlikView: gd_headcount.qvs
+
+**Última Atualização:** 06/08/2025 13:05:25
+
+**1. Resumo:**
+
+O script `gd_headcount.qvs` processa dados de *headcount* (contagem de funcionários) de uma organização, transformando-os em um modelo de dados para análise. Ele carrega dados brutos de arquivos QVD na camada *silver*, cria e popula tabelas de dimensões e fatos, limpa os dados e armazena os resultados em arquivos QVD na camada *gold*. O processo inclui a geração de tabelas auxiliares de calendário e tempo de serviço na empresa.
+
+**2. Principais Etapas:**
+
+* **2.1 Configurações:** O script inicia definindo as configurações de idioma e formatação para português (Brasil), incluindo separadores decimais e de milhares, formatos de moeda, data e hora, nomes de dias e meses, e o primeiro dia da semana. Define também variáveis para os caminhos de acesso aos arquivos de dados em diferentes camadas (bronze, silver, gold), fontes externas e internas.
+
+* **2.2 Criação da Tabela de Calendário:**  Uma tabela de dimensão (`gd_calendario_d`) é criada contendo informações detalhadas sobre datas, como ano, mês, dia da semana, semana do ano, trimestre, semestre, e o status do período (histórico ou futuro).  Esta tabela é armazenada em um arquivo QVD na camada *gold*.
+
+* **2.3 Criação da Tabela de Tempo na Companhia:** Uma tabela de dimensão (`gd_tempo_companhia_d`) é gerada, categorizando o tempo de serviço dos funcionários em grupos (gerencial e operacional) com base em faixas de tempo (meses, anos). Esta tabela também é salva como um QVD na camada *gold*.
+
+* **2.4 Carregamento de Dados Brutos:** Dados brutos de *headcount*, demissões, orçamento histórico e posições de funcionários são carregados a partir de arquivos QVD na camada *silver*. Chaves *hash* são geradas para otimizar os relacionamentos entre as tabelas.
+
+* **2.5 Criação de Dimensões:** Várias tabelas de dimensão são criadas a partir dos dados brutos:  `gd_employee_d` (funcionários), `gd_hierarquia_d` (hierarquia organizacional), `gd_funcao_d` (funções/cargos), `gd_eldorado_entity_d` (entidades Eldorado), `gd_secao_d` (seções), `gd_centro_de_custo_d` (centros de custo), `gd_situacao_d` (situação do funcionário), `gd_status_d` (status do *headcount*), `gd_tipo_funcionario_d` (tipo de funcionário), `gd_esclada_d` (jornada e escala de trabalho), `gd_idade_d` (idade e geração do funcionário), e `gd_contratacao_tipo_d` (tipo de contratação). Todas são armazenadas em arquivos QVD na camada *gold*.
+
+* **2.6 Criação de Fatos:** Tabelas de fatos são criadas, consolidando informações relevantes: `gd_headcount_f` (*headcount*), `gd_termination_f` (demissões), `gd_excel_hc_orcamento_historico_f` (orçamento histórico), e `gd_posicoes_f` (posições). Campos desnecessários são removidos para otimização. As tabelas de fatos são armazenadas em arquivos QVD na camada *gold*.
+
+* **2.7 Criação de Dimensões de Demissão:** As dimensões `gd_situacao_d`, `gd_status_d` e `gd_tipo_funcionario_d` são atualizadas com dados específicos de demissão.
+
+* **2.8 Limpeza de Dados:** Tabelas temporárias e dados brutos não mais necessários são removidos.
+
+* **2.9 Armazenamento dos Resultados:** Todas as tabelas (dimensões e fatos) são armazenadas em arquivos QVD na camada *gold*.
+
+* **2.10 Finalização:** O script termina com `Exit Script`.
+
+Documentação Técnica
+Arquivo: gd_headcount.qvs
+Última atualização: 07/08/2025 13:00:01
+# Documentação Técnica do Script QlikView: gd_headcount.qvs
+
+**Última Atualização:** 06/08/2025 13:05:25
+
+**1. Resumo:**
+
+O script `gd_headcount.qvs` processa e transforma dados de headcount (contagem de funcionários) de uma organização. Ele carrega dados brutos de diversas fontes (arquivos QVD na camada *silver*), cria e popula tabelas de dimensões e fatos, realiza a limpeza de dados e armazena os resultados em arquivos QVD na camada *gold*.  O processo inclui a geração de tabelas auxiliares de calendário e tempo na empresa.
+
+**2. Principais Etapas:**
+
+* **2.1 Configurações:** Define as configurações regionais e de formatação do script, incluindo separadores decimais e de milhares, formatos de moeda, data e hora, nomes de dias e meses em português (Brasil), primeiro dia da semana, e formato de abreviação numérica. Define também variáveis para os caminhos dos arquivos de dados nas camadas bronze, silver, gold, fontes externas e internas.
+
+* **2.2 Criação da Tabela de Calendário:** Cria uma tabela de dimensão (`gd_calendario_d`) contendo informações detalhadas de datas (ano, mês, dia da semana, semana do ano, trimestre, semestre, status do período – histórico ou futuro).  A tabela é armazenada em um arquivo QVD na camada *gold*.
+
+* **2.3 Criação da Tabela de Tempo na Companhia:** Gera uma tabela de dimensão (`gd_tempo_companhia_d`) que categoriza o tempo de serviço dos funcionários em grupos (gerencial e operacional), baseado em faixas de tempo (meses, anos). A tabela é armazenada em um arquivo QVD na camada *gold*.
+
+* **2.4 Carregamento de Dados Brutos:** Carrega dados brutos de headcount, demissões, orçamento histórico e posições de funcionários a partir de arquivos QVD na camada *silver*.  Gera chaves hash para otimizar relacionamentos entre tabelas.
+
+* **2.5 Criação de Dimensões:** Cria diversas tabelas de dimensão a partir dos dados brutos: `gd_employee_d` (funcionários), `gd_hierarquia_d` (hierarquia organizacional), `gd_funcao_d` (funções/cargos), `gd_eldorado_entity_d` (entidades Eldorado), `gd_secao_d` (seções), `gd_centro_de_custo_d` (centros de custo), `gd_situacao_d` (situação do funcionário), `gd_status_d` (status do headcount), `gd_tipo_funcionario_d` (tipo de funcionário), `gd_esclada_d` (jornada e escala de trabalho), `gd_idade_d` (idade e geração do funcionário), e `gd_contratacao_tipo_d` (tipo de contratação). Todas as dimensões são armazenadas em arquivos QVD na camada *gold*.
+
+* **2.6 Criação de Fatos:** Cria tabelas de fatos consolidando informações relevantes: `gd_headcount_f` (headcount), `gd_termination_f` (demissões), `gd_excel_hc_orcamento_historico_f` (orçamento histórico), e `gd_posicoes_f` (posições).  Campos desnecessários são removidos para otimizar o tamanho.  As tabelas de fatos são armazenadas em arquivos QVD na camada *gold*.
+
+* **2.7 Criação de Dimensões de Demissão:** As dimensões `gd_situacao_d`, `gd_status_d` e `gd_tipo_funcionario_d` são atualizadas com dados específicos de demissão.
+
+* **2.8 Limpeza de Dados:** Remove tabelas temporárias e dados brutos não mais necessários após o processamento.
+
+* **2.9 Armazenamento dos Resultados:** Armazena todas as tabelas (dimensões e fatos) em arquivos QVD na camada *gold*.
+
+* **2.10 Finalização:** Encerra a execução do script usando `Exit Script`.
+
+
+**Observação:** A documentação descreve o funcionamento do script, sem fornecer sugestões ou melhorias de código.
+
+Documentação Técnica
+Arquivo: gd_headcount.qvs
+Última atualização: 07/08/2025 12:50:55
+## Documentação Técnica do Script QlikView: gd_headcount.qvs
+
+**Última Atualização:** 06/08/2025 13:05:25
+
+**1. Resumo:**
+
+O script `gd_headcount.qvs` é um script QlikView que processa e transforma dados de headcount (contagem de funcionários) de uma organização.  Ele carrega dados brutos de diversas fontes, cria dimensões e tabelas de fatos, realiza a limpeza dos dados e armazena os resultados em arquivos QVD para uso posterior em análises e relatórios de recursos humanos.  O processo inclui a geração de tabelas de calendário e tempo na empresa.
+
+
+**2. Principais Etapas:**
+
+* **2.1 Configurações Regionais e de Formatação:** Define as configurações de separadores decimais e de milhares, formatos de moeda, data e hora, e nomes de dias e meses para o idioma português (Brasil).  Define também outras configurações como o primeiro dia da semana e o formato de abreviação numérica.
+
+* **2.2 Definição de Caminhos de Dados:** Define variáveis para especificar os caminhos de acesso aos arquivos de dados em diferentes camadas (bronze, silver, gold), bem como para fontes externas e internas.
+
+* **2.3 Criação do Calendário:** Cria uma tabela de dimensão (`gd_calendario_d`) contendo informações detalhadas de datas, incluindo ano, mês, dia da semana, semana do ano, trimestre, semestre e status do período (histórico ou futuro). Esta tabela é armazenada em um arquivo QVD.
+
+* **2.4 Criação do Tempo na Companhia:** Gera uma tabela de dimensão (`gd_tempo_companhia_d`) que categoriza o tempo de serviço dos funcionários em grupos gerenciais e operacionais,  baseado em faixas de tempo (meses, anos). Esta tabela também é armazenada em um arquivo QVD.
+
+* **2.5 Carregamento de Dados Brutos:** Carrega dados brutos de headcount, demissões, orçamento histórico e posições de funcionários a partir de arquivos QVD existentes (localizados nas camadas *silver*).  Gera chaves hash para otimizar o relacionamento entre as tabelas.
+
+* **2.6 Criação de Dimensões:** Cria várias tabelas de dimensão a partir dos dados brutos, incluindo:
+    * `gd_employee_d`: Dimensão de funcionários, com informações demográficas e de contato.
+    * `gd_hierarquia_d`: Dimensão de hierarquia organizacional.
+    * `gd_funcao_d`: Dimensão de funções/cargos.
+    * `gd_eldorado_entity_d`: Dimensão de entidades Eldorado.
+    * `gd_secao_d`: Dimensão de seções.
+    * `gd_centro_de_custo_d`: Dimensão de centros de custo.
+    * `gd_situacao_d`: Dimensão de situação do funcionário.
+    * `gd_status_d`: Dimensão de status do headcount.
+    * `gd_tipo_funcionario_d`: Dimensão de tipo de funcionário.
+    * `gd_esclada_d`: Dimensão de jornada e escala de trabalho.
+    * `gd_idade_d`: Dimensão de idade e geração do funcionário.
+    * `gd_contratacao_tipo_d`: Dimensão de tipo de contratação.
+    Todas as tabelas de dimensão são armazenadas em arquivos QVD.
+
+* **2.7 Criação de Fatos:** Cria tabelas de fatos a partir dos dados brutos, consolidando as informações relevantes e removendo campos desnecessários para otimizar o tamanho do arquivo. As tabelas criadas são:
+    * `gd_headcount_f`: Tabela de fatos de headcount.
+    * `gd_termination_f`: Tabela de fatos de demissões.
+    * `gd_excel_hc_orcamento_historico_f`: Tabela de fatos de orçamento histórico.
+    * `gd_posicoes_f`: Tabela de fatos de posições.
+    Todas as tabelas de fatos são armazenadas em arquivos QVD.
+
+* **2.8 Criação de Dimensões de Demissão:**  As dimensões `gd_situacao_d`, `gd_status_d` e `gd_tipo_funcionário_d` são concatenadas com dados específicos de demissão.
+
+* **2.9 Limpeza de Dados:** Remove tabelas temporárias e dados brutos que não são mais necessários após o processamento.
+
+* **2.10 Armazenamento dos Resultados:** Armazena todas as tabelas geradas (dimensões e fatos) em arquivos QVD, localizados na camada *gold*, para utilização posterior em aplicativos QlikView.
+
+* **2.11 Finalização do Script:** Encerra a execução do script utilizando `Exit Script`.
+
+Documentação Técnica
+Arquivo: gd_headcount.qvs
+Última atualização: 07/08/2025 12:48:35
+
+
+Documentação Técnica
+Arquivo: gd_headcount.qvs
+Última atualização: 07/08/2025 12:39:45
+
+
+Documentação Técnica
+Arquivo: gd_headcount.qvs
+Última atualização: 07/08/2025 12:33:30
+
+
 
 
 
