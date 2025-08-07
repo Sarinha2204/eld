@@ -1,15 +1,15 @@
-
-
 import os
 import time
 from datetime import datetime
 import google.generativeai as genai
+from fpdf import FPDF
+import os  
 
-# Inicializa o cliente Gemini com sua chave de API
 genai.configure(api_key="AIzaSyANW3dk0XXkTwx2Pip0lqRes-CYv0IvjdA")
 
-# Carrega o modelo
+
 model = genai.GenerativeModel("gemini-1.5-pro")
+
 
 def gerar_documentacao_qvs(conteudo: str, nome_arquivo: str) -> str:
     """Gera documentação para um arquivo QVS usando a API Google Gemini."""
@@ -18,16 +18,12 @@ def gerar_documentacao_qvs(conteudo: str, nome_arquivo: str) -> str:
     prompt = f"""
 Você é especialista em QlikView e documentação técnica.
 
-Analise o script QVS abaixo e gere uma documentação clara e formal em português, contendo:
-- Nome do arquivo
-- Data da última atualização
+Analise o script QVS abaixo e gere uma documentação clara e formal explicando o conteúdo do script, sem dar sujestões, em português, 
+contendo:
 - Resumo do que o script faz
 - Principais etapas (em tópicos)
 
-Considere as linhas iniciadas por "//", "#" ou "/*" como comentários.
 
-Arquivo: {nome_arquivo}
-Data: {data_hora}
 
 Script:
 {conteudo}
@@ -37,15 +33,29 @@ Script:
         response = model.generate_content(prompt)
         conteudo_gerado = response.text.strip()
     except Exception:
-        conteudo_gerado = "// Erro: nenhuma resposta gerada pela API.\n"
+        conteudo_gerado = ""
 
     cabecalho = (
-        f"// Documentação Técnica\n"
-        f"// Arquivo: {nome_arquivo}\n"
-        f"// Última atualização: {data_hora}\n"
+        f"Documentação Técnica\n"
+        f"Arquivo: {nome_arquivo}\n"
+        f"Última atualização: {data_hora}\n"
         f"{conteudo_gerado}\n\n"
     )
     return cabecalho
+
+
+def salvar_documentacao_em_pdf(conteudo_doc: str, nome_arquivo: str):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.set_font("Arial", size=12)
+    
+    for linha in conteudo_doc.splitlines():
+        pdf.cell(0, 10, txt=linha, ln=True)
+    
+    nome_pdf = os.path.splitext(nome_arquivo)[0] + "_documentacao.pdf"
+    pdf.output(nome_pdf)
+    print(f"Documentação exportada para PDF: {nome_pdf}")
 
 
 def atualizar_documentacao_qvs(diretorio: str):
@@ -70,13 +80,16 @@ def atualizar_documentacao_qvs(diretorio: str):
                 with open(caminho, "w", encoding="utf-8") as f:
                     f.write(nova_doc + conteudo_sem_doc)
 
+                # Salva documentação também em PDF
+                salvar_documentacao_em_pdf(nova_doc, file)
+
                 # Espera entre requisições para evitar sobrecarga
                 time.sleep(5)
 
 
 if __name__ == "__main__":
     atualizar_documentacao_qvs(".")
-    print("Documentação atualizada para todos os arquivos .qvs")
+    print("Documentação atualizada para todos os arquivos .qvs e exportada para PDF.")
 
 
 

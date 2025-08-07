@@ -1,7 +1,10 @@
 // Documentação Técnica
 // Arquivo: sv_headcount.qvs
-// Última atualização: 07/08/2025 10:18:59
-// Erro: nenhuma resposta gerada pela API.
+// Última atualização: 07/08/2025 12:27:49
+
+
+
+
 
 
 Documentação Técnica do Script QlikView
@@ -96,7 +99,7 @@ O script `sv_headcount.qvs` é responsável por carregar, transformar e armazena
 ## Considerações Finais
 O script é uma parte fundamental do processo de análise de dados de recursos humanos, permitindo que a equipe de análise tenha acesso a informações atualizadas e bem estruturadas sobre a força de trabalho da organização. A utilização de tabelas de mapeamento e a transformação cuidadosa dos dados garantem que as análises sejam precisas e relevantes.
 
-﻿SET ThousandSep='.';
+SET ThousandSep='.';
 SET DecimalSep=',';
 SET MoneyThousandSep='.';
 SET MoneyDecimalSep=',';

@@ -1,7 +1,10 @@
 // Documentação Técnica
 // Arquivo: People Analytics Model.qvs
-// Última atualização: 07/08/2025 10:18:54
-// Erro: nenhuma resposta gerada pela API.
+// Última atualização: 07/08/2025 12:27:44
+
+
+
+
 
 
 Documentação Técnica do Script QlikView
@@ -134,6 +137,7 @@ Este script carrega e transforma dados para o modelo de People Analytics. Ele de
 - Ajustar as variáveis SET para caminhos e formatos específicos do ambiente conforme necessário.
 - A tabela de link é central para associar fatos e dimensões no modelo de dados.
 - Este script é projetado para recarregamento em ambientes Qlik Sense Enterprise.
+
 
 
 
