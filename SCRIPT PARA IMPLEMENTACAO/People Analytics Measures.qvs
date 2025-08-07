@@ -1,36 +1,95 @@
-//=============================================================================
-// People Analytics Measures Script CLAUDE SONNET 3.5
-// Description: This script defines various measures and KPIs for People Analytics
-// including overtime, absenteeism, and hour bank calculations.
-//
-// Main sections:
-// 1. Overtime Measures
-//    - Total overtime hours
-//    - Average overtime costs
-//    - Overtime percentages YoY and MoM
-//    - Eligible/ineligible people for overtime
-//
-// 2. Absenteeism Measures
-//    - Total absence days
-//    - Unplanned absences
-//    - Absenteeism rates and indexes
-//    - YoY and MoM comparisons
-//    - Leave types (medical, unexcused, delays)
-//
-// 3. Hour Bank Measures
-//    - Hour bank balances
-//    - Positive/negative hour bank totals
-//    - Payment calculations for March/September
-//
-// Dependencies:
-//  - Requires gd_eventos_f table
-//  - Date fields must be in DD.MM.YYYY format
-//  
-// Notes:
-//  - All measures use Set Analysis for precise time period calculations
-//  - Calculations include both current and previous year comparisons
-//  - Special handling for March/September hour bank payments
-//=============================================================================
+// Documentação Técnica
+// Arquivo: People Analytics Measures.qvs
+// Última atualização: 07/08/2025 10:18:49
+// Erro: nenhuma resposta gerada pela API.
+
+
+
+
+## Nome do Arquivo
+**People Analytics Measures.qvs**
+
+## Data e Hora da Última Atualização
+**07/08/2025 09:31:59**
+
+## Descrição do que o Script Faz
+O script "People Analytics Measures" é responsável por calcular diversas métricas relacionadas à análise de pessoas, focando em horas extras, absenteísmo e saldo de horas (banco de horas). Ele utiliza dados da tabela `gd_eventos_f` e aplica filtros específicos para agregar e calcular métricas como custos, horas, porcentagens e tendências (mensais e anuais) para cada categoria. O script é estruturado em seções que tratam de horas extras, absenteísmo e saldo de horas.
+
+## Lista Resumida dos Principais Componentes e Etapas
+
+1. **Definição de Variáveis**:
+   - O script define várias variáveis que armazenam cálculos e métricas, como horas totais extras, custos médios, taxas de absenteísmo e saldo de horas.
+
+2. **Cálculo de Horas Extras**:
+   - Calcula total de horas extras, custos associados, média de horas extras por pessoa, e percentual de funcionários elegíveis e inelegíveis para horas extras.
+
+3. **Cálculo de Absenteísmo**:
+   - Calcula dias de absenteísmo, incluindo faltas, atestados e abonos. Também calcula taxas de absenteísmo e compara dados anuais e mensais.
+
+4. **Cálculo de Saldo de Horas (Banco de Horas)**:
+   - Calcula o total de horas no banco, incluindo saldo positivo e negativo, e a porcentagem de colaboradores com saldo de banco.
+
+5. **Comparações de Tendências**:
+   - O script inclui lógica para calcular variações mensais (MoM) e anuais (YoY) em relação a horas extras, absenteísmo e valores de faltas.
+
+6. **Uso de Comandos TRACE**:
+   - O script utiliza o comando TRACE para registrar o início do carregamento de cada seção, facilitando a depuração e o acompanhamento do processo.
+
+7. **Finalização do Script**:
+   - O script é finalizado com o comando `EXIT SCRIPT`, encerrando a execução.
+
+## Observações
+- O script faz uso de expressões calculadas e comandos SET para derivar as métricas.
+- As comparações de ano a ano (YoY) e mês a mês (MoM) são realizadas com base em seleções de data, utilizando funções de data do QlikView.
+- A estrutura do script permite fácil modificação e adição de novas métricas conforme necessário.
+
+Esta documentação fornece uma visão geral do funcionamento do script e pode ser utilizada como referência para futuras implementações ou modificações.
+
+TextBlock(citations=None, text='Documentação Técnica do Script QlikView\n\n## Nome do Arquivo\n**People Analytics Measures.qvs**\n\n## Data e Hora da Última Atualização\n**06/08/2025 13:05:37**\n\n## Descrição do que o Script Faz\nO script "People Analytics Measures" é responsável por calcular diversas métricas relacionadas à análise de pessoas, focando em horas extras, absenteísmo e saldo de horas (banco de horas). Ele utiliza dados da tabela `gd_eventos_f` e aplica filtros específicos para agregar e calcular métricas como custos, horas, porcentagens e tendências (mensais e anuais) para cada categoria. O script é estruturado em seções que tratam de horas extras, absenteísmo e saldo de horas.\n\n## Lista Resumida dos Principais Componentes e Etapas\n\n1. **Definição de Variáveis**:\n   - O script define várias variáveis que armazenam cálculos e métricas, como horas totais extras, custos médios, taxas de absenteísmo e saldo de horas.\n\n2. **Cálculo de Horas Extras**:\n   - Calcula total de horas extras, custos associados, média de horas extras por pessoa, e percentual de funcionários elegíveis e inelegíveis para horas extras.\n\n3. **Cálculo de Absenteísmo**:\n   - Calcula dias de absenteísmo, incluindo faltas, atestados e abonos. Também calcula taxas de absenteísmo e compara dados anuais e mensais.\n\n4. **Cálculo de Saldo de Horas (Banco de Horas)**:\n   - Calcula o total de horas no banco, incluindo saldo positivo e negativo, e a porcentagem de colaboradores com saldo de banco.\n\n5. **Comparações de Tendências**:\n   - O script inclui lógica para calcular variações mensais (MoM) e anuais (YoY) em relação a horas extras, absenteísmo e valores de faltas.\n\n6. **Uso de Comandos TRACE**:\n   - O script utiliza o comando TRACE para registrar o início do carregamento de cada seção, facilitando a depuração e o acompanhamento do processo.\n\n7. **Finalização do Script**:\n   - O script é finalizado com o comando `EXIT SCRIPT`, encerrando a execução.\n\n## Observações\n- O script faz uso de expressões calculadas e comandos SET para derivar as métricas.\n- As comparações de ano a ano (YoY) e mês a mês (MoM) são realizadas com base em seleções de data, utilizando funções de data do QlikView.\n- A estrutura do script permite fácil modificação e adição de novas métricas conforme necessário.\n\nEsta documentação fornece uma visão geral do funcionamento do script e pode ser utilizada como referência para futuras implementações ou modificações.', type='text')
+
+TextBlock(citations=None, text='## Nome do Arquivo\n**People Analytics Measures.qvs**\n\n## Data e Hora da Última Atualização\n**07/08/2025 09:31:59**\n\n## Descrição do que o Script Faz\nO script "People Analytics Measures" é responsável por calcular diversas métricas relacionadas à análise de pessoas, focando em horas extras, absenteísmo e saldo de horas (banco de horas). Ele utiliza dados da tabela `gd_eventos_f` e aplica filtros específicos para agregar e calcular métricas como custos, horas, porcentagens e tendências (mensais e anuais) para cada categoria. O script é estruturado em seções que tratam de horas extras, absenteísmo e saldo de horas.\n\n## Lista Resumida dos Principais Componentes e Etapas\n\n1. **Definição de Variáveis**:\n   - O script define várias variáveis que armazenam cálculos e métricas, como horas totais extras, custos médios, taxas de absenteísmo e saldo de horas.\n\n2. **Cálculo de Horas Extras**:\n   - Calcula total de horas extras, custos associados, média de horas extras por pessoa, e percentual de funcionários elegíveis e inelegíveis para horas extras.\n\n3. **Cálculo de Absenteísmo**:\n   - Calcula dias de absenteísmo, incluindo faltas, atestados e abonos. Também calcula taxas de absenteísmo e compara dados anuais e mensais.\n\n4. **Cálculo de Saldo de Horas (Banco de Horas)**:\n   - Calcula o total de horas no banco, incluindo saldo positivo e negativo, e a porcentagem de colaboradores com saldo de banco.\n\n5. **Comparações de Tendências**:\n   - O script inclui lógica para calcular variações mensais (MoM) e anuais (YoY) em relação a horas extras, absenteísmo e valores de faltas.\n\n6. **Uso de Comandos TRACE**:\n   - O script utiliza o comando TRACE para registrar o início do carregamento de cada seção, facilitando a depuração e o acompanhamento do processo.\n\n7. **Finalização do Script**:\n   - O script é finalizado com o comando `EXIT SCRIPT`, encerrando a execução.\n\n## Observações\n- O script faz uso de expressões calculadas e comandos SET para derivar as métricas.\n- As comparações de ano a ano (YoY) e mês a mês (MoM) são realizadas com base em seleções de data, utilizando funções de data do QlikView.\n- A estrutura do script permite fácil modificação e adição de novas métricas conforme necessário.\n\nEsta documentação fornece uma visão geral do funcionamento do script e pode ser utilizada como referência para futuras implementações ou modificações.', type='text')
+
+# Documentação Técnica do Script QlikView
+
+## Nome do Arquivo
+**People Analytics Measures.qvs**
+
+## Data e Hora da Última Atualização
+**06/08/2025 13:05:37**
+
+## Descrição do que o Script Faz
+O script "People Analytics Measures" é responsável por calcular diversas métricas relacionadas à análise de pessoas, focando em horas extras, absenteísmo e saldo de horas (banco de horas). Ele utiliza dados da tabela `gd_eventos_f` e aplica filtros específicos para agregar e calcular métricas como custos, horas, porcentagens e tendências (mensais e anuais) para cada categoria. O script é estruturado em seções que tratam de horas extras, absenteísmo e saldo de horas.
+
+## Lista Resumida dos Principais Componentes e Etapas
+
+1. **Definição de Variáveis**:
+   - O script define várias variáveis que armazenam cálculos e métricas, como horas totais extras, custos médios, taxas de absenteísmo e saldo de horas.
+
+2. **Cálculo de Horas Extras**:
+   - Calcula total de horas extras, custos associados, média de horas extras por pessoa, e percentual de funcionários elegíveis e inelegíveis para horas extras.
+
+3. **Cálculo de Absenteísmo**:
+   - Calcula dias de absenteísmo, incluindo faltas, atestados e abonos. Também calcula taxas de absenteísmo e compara dados anuais e mensais.
+
+4. **Cálculo de Saldo de Horas (Banco de Horas)**:
+   - Calcula o total de horas no banco, incluindo saldo positivo e negativo, e a porcentagem de colaboradores com saldo de banco.
+
+5. **Comparações de Tendências**:
+   - O script inclui lógica para calcular variações mensais (MoM) e anuais (YoY) em relação a horas extras, absenteísmo e valores de faltas.
+
+6. **Uso de Comandos TRACE**:
+   - O script utiliza o comando TRACE para registrar o início do carregamento de cada seção, facilitando a depuração e o acompanhamento do processo.
+
+7. **Finalização do Script**:
+   - O script é finalizado com o comando `EXIT SCRIPT`, encerrando a execução.
+
+## Observações
+- O script faz uso de expressões calculadas e comandos SET para derivar as métricas.
+- As comparações de ano a ano (YoY) e mês a mês (MoM) são realizadas com base em seleções de data, utilizando funções de data do QlikView.
+- A estrutura do script permite fácil modificação e adição de novas métricas conforme necessário.
+
+Esta documentação fornece uma visão geral do funcionamento do script e pode ser utilizada como referência para futuras implementações ou modificações.
+
 
 
 /** GEMINI 2.0 FLASH

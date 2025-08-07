@@ -1,3 +1,101 @@
+// Documentação Técnica
+// Arquivo: sv_headcount.qvs
+// Última atualização: 07/08/2025 10:18:59
+// Erro: nenhuma resposta gerada pela API.
+
+
+Documentação Técnica do Script QlikView
+
+## Nome do Arquivo
+`sv_headcount.qvs`
+
+## Data e Hora da Última Atualização
+07/08/2025 10:01:57
+
+## Descrição do que o Script Faz
+O script `sv_headcount.qvs` é responsável por carregar, transformar e armazenar dados relacionados ao headcount (contagem de funcionários) e suas respectivas informações em um ambiente QlikView. Ele realiza a leitura de diversos arquivos QVD, aplica transformações nos dados, cria tabelas de mapeamento e gera tabelas finais que são armazenadas em formato QVD para uso posterior em análises e relatórios.
+
+## Lista Resumida dos Principais Componentes e Etapas
+
+1. **Configuração de Formatação e Localização de Dados:**
+   - Define formatos numéricos, de moeda e de data.
+   - Estabelece caminhos para diferentes camadas de dados (bronze, silver, gold, etc.).
+
+2. **Carregamento de Dados Brutos:**
+   - Carrega dados de várias tabelas QVD, aplicando filtros de data quando necessário.
+
+3. **Criação de Tabelas de Mapeamento:**
+   - Cria tabelas de mapeamento para associar códigos de coligadas, direções e classificações de demissão.
+
+4. **Transformação de Dados:**
+   - Realiza transformações em campos, como capitalização de nomes e formatação de datas.
+   - Calcula campos adicionais, como a idade dos funcionários e o tempo de permanência na empresa.
+
+5. **Filtragem e Junção de Dados:**
+   - Filtra registros com base em condições específicas (ex: demissões, status de funcionários).
+   - Realiza junções entre tabelas para enriquecer os dados com informações adicionais, como hierarquia e dados pessoais.
+
+6. **Geração de Tabelas Finais:**
+   - Cria tabelas finais que contêm informações consolidadas sobre o headcount e as demissões.
+   - Armazena essas tabelas em arquivos QVD para uso futuro.
+
+7. **Limpeza de Dados:**
+   - Remove tabelas temporárias e dados brutos que não são mais necessários após a transformação e armazenamento.
+
+8. **Armazenamento de Resultados:**
+   - Armazena as tabelas finais (`sv_headcount_f` e `sv_termination_f`) em arquivos QVD para acesso posterior.
+
+## Considerações Finais
+O script é uma parte fundamental do processo de análise de dados de recursos humanos, permitindo que a equipe de análise tenha acesso a informações atualizadas e bem estruturadas sobre a força de trabalho da organização. A utilização de tabelas de mapeamento e a transformação cuidadosa dos dados garantem que as análises sejam precisas e relevantes.
+
+TextBlock(citations=None, text='Documentação Técnica do Script QlikView\n\n## Nome do Arquivo\n`sv_headcount.qvs`\n\n## Data e Hora da Última Atualização\n07/08/2025 09:47:43\n\n## Descrição do que o Script Faz\nO script `sv_headcount.qvs` é responsável por carregar, transformar e armazenar dados relacionados ao headcount (contagem de funcionários) e suas respectivas informações em um ambiente QlikView. Ele realiza a leitura de diversos arquivos QVD, aplica transformações nos dados, cria tabelas de mapeamento e gera tabelas finais que são armazenadas em formato QVD para uso posterior em análises e relatórios.\n\n## Lista Resumida dos Principais Componentes e Etapas\n\n1. **Configuração de Formatação e Localização de Dados:**\n   - Define formatos numéricos, de moeda e de data.\n   - Estabelece caminhos para diferentes camadas de dados (bronze, silver, gold, etc.).\n\n2. **Carregamento de Dados Brutos:**\n   - Carrega dados de várias tabelas QVD, aplicando filtros de data quando necessário.\n\n3. **Criação de Tabelas de Mapeamento:**\n   - Cria tabelas de mapeamento para associar códigos de coligadas, direções e classificações de demissão.\n\n4. **Transformação de Dados:**\n   - Realiza transformações em campos, como capitalização de nomes e formatação de datas.\n   - Calcula campos adicionais, como a idade dos funcionários e o tempo de permanência na empresa.\n\n5. **Filtragem e Junção de Dados:**\n   - Filtra registros com base em condições específicas (ex: demissões, status de funcionários).\n   - Realiza junções entre tabelas para enriquecer os dados com informações adicionais, como hierarquia e dados pessoais.\n\n6. **Geração de Tabelas Finais:**\n   - Cria tabelas finais que contêm informações consolidadas sobre o headcount e as demissões.\n   - Armazena essas tabelas em arquivos QVD para uso futuro.\n\n7. **Limpeza de Dados:**\n   - Remove tabelas temporárias e dados brutos que não são mais necessários após a transformação e armazenamento.\n\n8. **Armazenamento de Resultados:**\n   - Armazena as tabelas finais (`sv_headcount_f` e `sv_termination_f`) em arquivos QVD para acesso posterior.\n\n## Considerações Finais\nO script é uma parte fundamental do processo de análise de dados de recursos humanos, permitindo que a equipe de análise tenha acesso a informações atualizadas e bem estruturadas sobre a força de trabalho da organização. A utilização de tabelas de mapeamento e a transformação cuidadosa dos dados garantem que as análises sejam precisas e relevantes.', type='text')
+
+TextBlock(citations=None, text='Documentação Técnica do Script QlikView\n\n## Nome do Arquivo\n`sv_headcount.qvs`\n\n## Data e Hora da Última Atualização\n07/08/2025 09:33:44\n\n## Descrição do que o Script Faz\nO script `sv_headcount.qvs` é responsável por carregar, transformar e armazenar dados relacionados ao headcount (contagem de funcionários) e suas respectivas informações em um ambiente QlikView. Ele realiza a leitura de diversos arquivos QVD, aplica transformações nos dados, cria tabelas de mapeamento e gera tabelas finais que são armazenadas em formato QVD para uso posterior em análises e relatórios.\n\n## Lista Resumida dos Principais Componentes e Etapas\n\n1. **Configuração de Formatação e Localização de Dados:**\n   - Define formatos numéricos, de moeda e de data.\n   - Estabelece caminhos para diferentes camadas de dados (bronze, silver, gold, etc.).\n\n2. **Carregamento de Dados Brutos:**\n   - Carrega dados de várias tabelas QVD, aplicando filtros de data quando necessário.\n\n3. **Criação de Tabelas de Mapeamento:**\n   - Cria tabelas de mapeamento para associar códigos de coligadas, direções e classificações de demissão.\n\n4. **Transformação de Dados:**\n   - Realiza transformações em campos, como capitalização de nomes e formatação de datas.\n   - Calcula campos adicionais, como a idade dos funcionários e o tempo de permanência na empresa.\n\n5. **Filtragem e Junção de Dados:**\n   - Filtra registros com base em condições específicas (ex: demissões, status de funcionários).\n   - Realiza junções entre tabelas para enriquecer os dados com informações adicionais, como hierarquia e dados pessoais.\n\n6. **Geração de Tabelas Finais:**\n   - Cria tabelas finais que contêm informações consolidadas sobre o headcount e as demissões.\n   - Armazena essas tabelas em arquivos QVD para uso futuro.\n\n7. **Limpeza de Dados:**\n   - Remove tabelas temporárias e dados brutos que não são mais necessários após a transformação e armazenamento.\n\n8. **Armazenamento de Resultados:**\n   - Armazena as tabelas finais (`sv_headcount_f` e `sv_termination_f`) em arquivos QVD para acesso posterior.\n\n## Considerações Finais\nO script é uma parte fundamental do processo de análise de dados de recursos humanos, permitindo que a equipe de análise tenha acesso a informações atualizadas e bem estruturadas sobre a força de trabalho da organização. A utilização de tabelas de mapeamento e a transformação cuidadosa dos dados garantem que as análises sejam precisas e relevantes.', type='text')
+
+# Documentação Técnica do Script QlikView
+
+## Nome do Arquivo
+`sv_headcount.qvs`
+
+## Data e Hora da Última Atualização
+06/08/2025 13:06:07
+
+## Descrição do que o Script Faz
+O script `sv_headcount.qvs` é responsável por carregar, transformar e armazenar dados relacionados ao headcount (contagem de funcionários) e suas respectivas informações em um ambiente QlikView. Ele realiza a leitura de diversos arquivos QVD, aplica transformações nos dados, cria tabelas de mapeamento e gera tabelas finais que são armazenadas em formato QVD para uso posterior em análises e relatórios.
+
+## Lista Resumida dos Principais Componentes e Etapas
+
+1. **Configuração de Formatação e Localização de Dados:**
+   - Define formatos numéricos, de moeda e de data.
+   - Estabelece caminhos para diferentes camadas de dados (bronze, silver, gold, etc.).
+
+2. **Carregamento de Dados Brutos:**
+   - Carrega dados de várias tabelas QVD, aplicando filtros de data quando necessário.
+
+3. **Criação de Tabelas de Mapeamento:**
+   - Cria tabelas de mapeamento para associar códigos de coligadas, direções e classificações de demissão.
+
+4. **Transformação de Dados:**
+   - Realiza transformações em campos, como capitalização de nomes e formatação de datas.
+   - Calcula campos adicionais, como a idade dos funcionários e o tempo de permanência na empresa.
+
+5. **Filtragem e Junção de Dados:**
+   - Filtra registros com base em condições específicas (ex: demissões, status de funcionários).
+   - Realiza junções entre tabelas para enriquecer os dados com informações adicionais, como hierarquia e dados pessoais.
+
+6. **Geração de Tabelas Finais:**
+   - Cria tabelas finais que contêm informações consolidadas sobre o headcount e as demissões.
+   - Armazena essas tabelas em arquivos QVD para uso futuro.
+
+7. **Limpeza de Dados:**
+   - Remove tabelas temporárias e dados brutos que não são mais necessários após a transformação e armazenamento.
+
+8. **Armazenamento de Resultados:**
+   - Armazena as tabelas finais (`sv_headcount_f` e `sv_termination_f`) em arquivos QVD para acesso posterior.
+
+## Considerações Finais
+O script é uma parte fundamental do processo de análise de dados de recursos humanos, permitindo que a equipe de análise tenha acesso a informações atualizadas e bem estruturadas sobre a força de trabalho da organização. A utilização de tabelas de mapeamento e a transformação cuidadosa dos dados garantem que as análises sejam precisas e relevantes.
+
 ﻿SET ThousandSep='.';
 SET DecimalSep=',';
 SET MoneyThousandSep='.';

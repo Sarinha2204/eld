@@ -1,4 +1,111 @@
-﻿
+// Documentação Técnica
+// Arquivo: gd_headcount.qvs
+// Última atualização: 07/08/2025 10:18:43
+// Erro: nenhuma resposta gerada pela API.
+
+
+
+
+Documentação Técnica do Script QlikView
+
+## Nome do Arquivo
+**gd_headcount.qvs**
+
+## Data e Hora da Última Atualização
+**06/08/2025 13:05:25**
+
+## Descrição do que o Script Faz
+O script `gd_headcount.qvs` é responsável por processar e transformar dados relacionados ao headcount (contagem de funcionários) de uma organização. Ele gera tabelas de calendário, tempo de empresa, e carrega dados brutos de headcount e demissões, além de criar dimensões e fatos que serão utilizados em análises de recursos humanos. O script também realiza a limpeza e a organização dos dados, armazenando os resultados em arquivos QVD para uso posterior.
+
+## Lista Resumida dos Principais Componentes e Etapas
+
+1. **Configurações Regionais e de Formatação**
+   - Define separadores numéricos, formatos de moeda, data e hora, além de nomes de meses e dias em português.
+
+2. **Definição de Caminhos de Dados**
+   - Estabelece variáveis para os caminhos de acesso aos diferentes níveis de dados (bronze, silver, gold, etc.).
+
+3. **Criação do Calendário**
+   - Gera uma tabela de calendário (`gd_calendario_d`) com informações sobre datas, meses, anos, semanas e status de períodos (histórico ou futuro).
+
+4. **Criação do Tempo na Companhia**
+   - Gera uma tabela (`gd_tempo_companhia_d`) que categoriza o tempo de permanência dos funcionários na empresa em grupos gerenciais e operacionais.
+
+5. **Carregamento de Dados Brutos**
+   - Carrega dados de headcount, demissões, histórico de orçamento e posições a partir de arquivos QVD existentes, criando chaves de hierarquia e outras chaves de referência.
+
+6. **Criação de Dimensões**
+   - Cria várias dimensões (ex: `gd_employee_d`, `gd_hierarquia_d`, `gd_funcao_d`, etc.) a partir dos dados brutos, armazenando informações relevantes sobre funcionários, hierarquias, funções, seções e centros de custo.
+
+7. **Criação de Fatos**
+   - Gera tabelas de fatos (`gd_headcount_f`, `gd_termination_f`, etc.) que contêm dados consolidados sobre headcount e demissões, removendo campos desnecessários para otimizar o armazenamento.
+
+8. **Criação de Dimensões de Demissão**
+   - Cria dimensões específicas para demissões, incluindo status e tipo de funcionário.
+
+9. **Limpeza de Dados**
+   - Remove tabelas temporárias e dados brutos que não são mais necessários após a criação das tabelas finais.
+
+10. **Armazenamento dos Resultados**
+    - Armazena todas as tabelas geradas em arquivos QVD para uso futuro em análises e relatórios.
+
+## Conclusão
+O script `gd_headcount.qvs` é uma parte fundamental do processo de análise de dados de recursos humanos, permitindo a visualização e interpretação de informações críticas sobre a força de trabalho da organização. Através de sua estrutura organizada e eficiente, ele facilita a tomada de decisões informadas com base em dados atualizados e bem formatados.
+
+TextBlock(citations=None, text='Documentação Técnica do Script QlikView\n\n## Nome do Arquivo\n**gd_headcount.qvs**\n\n## Data e Hora da Última Atualização\n**06/08/2025 13:05:25**\n\n## Descrição do que o Script Faz\nO script `gd_headcount.qvs` é responsável por processar e transformar dados relacionados ao headcount (contagem de funcionários) de uma organização. Ele gera tabelas de calendário, tempo de empresa, e carrega dados brutos de headcount e demissões, além de criar dimensões e fatos que serão utilizados em análises de recursos humanos. O script também realiza a limpeza e a organização dos dados, armazenando os resultados em arquivos QVD para uso posterior.\n\n## Lista Resumida dos Principais Componentes e Etapas\n\n1. **Configurações Regionais e de Formatação**\n   - Define separadores numéricos, formatos de moeda, data e hora, além de nomes de meses e dias em português.\n\n2. **Definição de Caminhos de Dados**\n   - Estabelece variáveis para os caminhos de acesso aos diferentes níveis de dados (bronze, silver, gold, etc.).\n\n3. **Criação do Calendário**\n   - Gera uma tabela de calendário (`gd_calendario_d`) com informações sobre datas, meses, anos, semanas e status de períodos (histórico ou futuro).\n\n4. **Criação do Tempo na Companhia**\n   - Gera uma tabela (`gd_tempo_companhia_d`) que categoriza o tempo de permanência dos funcionários na empresa em grupos gerenciais e operacionais.\n\n5. **Carregamento de Dados Brutos**\n   - Carrega dados de headcount, demissões, histórico de orçamento e posições a partir de arquivos QVD existentes, criando chaves de hierarquia e outras chaves de referência.\n\n6. **Criação de Dimensões**\n   - Cria várias dimensões (ex: `gd_employee_d`, `gd_hierarquia_d`, `gd_funcao_d`, etc.) a partir dos dados brutos, armazenando informações relevantes sobre funcionários, hierarquias, funções, seções e centros de custo.\n\n7. **Criação de Fatos**\n   - Gera tabelas de fatos (`gd_headcount_f`, `gd_termination_f`, etc.) que contêm dados consolidados sobre headcount e demissões, removendo campos desnecessários para otimizar o armazenamento.\n\n8. **Criação de Dimensões de Demissão**\n   - Cria dimensões específicas para demissões, incluindo status e tipo de funcionário.\n\n9. **Limpeza de Dados**\n   - Remove tabelas temporárias e dados brutos que não são mais necessários após a criação das tabelas finais.\n\n10. **Armazenamento dos Resultados**\n    - Armazena todas as tabelas geradas em arquivos QVD para uso futuro em análises e relatórios.\n\n## Conclusão\nO script `gd_headcount.qvs` é uma parte fundamental do processo de análise de dados de recursos humanos, permitindo a visualização e interpretação de informações críticas sobre a força de trabalho da organização. Através de sua estrutura organizada e eficiente, ele facilita a tomada de decisões informadas com base em dados atualizados e bem formatados.', type='text')
+
+TextBlock(citations=None, text='Documentação Técnica do Script QlikView\n\n## Nome do Arquivo\n**gd_headcount.qvs**\n\n## Data e Hora da Última Atualização\n**06/08/2025 13:05:25**\n\n## Descrição do que o Script Faz\nO script `gd_headcount.qvs` é responsável por processar e transformar dados relacionados ao headcount (contagem de funcionários) de uma organização. Ele gera tabelas de calendário, tempo de empresa, e carrega dados brutos de headcount e demissões, além de criar dimensões e fatos que serão utilizados em análises de recursos humanos. O script também realiza a limpeza e a organização dos dados, armazenando os resultados em arquivos QVD para uso posterior.\n\n## Lista Resumida dos Principais Componentes e Etapas\n\n1. **Configurações Regionais e de Formatação**\n   - Define separadores numéricos, formatos de moeda, data e hora, além de nomes de meses e dias em português.\n\n2. **Definição de Caminhos de Dados**\n   - Estabelece variáveis para os caminhos de acesso aos diferentes níveis de dados (bronze, silver, gold, etc.).\n\n3. **Criação do Calendário**\n   - Gera uma tabela de calendário (`gd_calendario_d`) com informações sobre datas, meses, anos, semanas e status de períodos (histórico ou futuro).\n\n4. **Criação do Tempo na Companhia**\n   - Gera uma tabela (`gd_tempo_companhia_d`) que categoriza o tempo de permanência dos funcionários na empresa em grupos gerenciais e operacionais.\n\n5. **Carregamento de Dados Brutos**\n   - Carrega dados de headcount, demissões, histórico de orçamento e posições a partir de arquivos QVD existentes, criando chaves de hierarquia e outras chaves de referência.\n\n6. **Criação de Dimensões**\n   - Cria várias dimensões (ex: `gd_employee_d`, `gd_hierarquia_d`, `gd_funcao_d`, etc.) a partir dos dados brutos, armazenando informações relevantes sobre funcionários, hierarquias, funções, seções e centros de custo.\n\n7. **Criação de Fatos**\n   - Gera tabelas de fatos (`gd_headcount_f`, `gd_termination_f`, etc.) que contêm dados consolidados sobre headcount e demissões, removendo campos desnecessários para otimizar o armazenamento.\n\n8. **Criação de Dimensões de Demissão**\n   - Cria dimensões específicas para demissões, incluindo status e tipo de funcionário.\n\n9. **Limpeza de Dados**\n   - Remove tabelas temporárias e dados brutos que não são mais necessários após a criação das tabelas finais.\n\n10. **Armazenamento dos Resultados**\n    - Armazena todas as tabelas geradas em arquivos QVD para uso futuro em análises e relatórios.\n\n## Conclusão\nO script `gd_headcount.qvs` é uma parte fundamental do processo de análise de dados de recursos humanos, permitindo a visualização e interpretação de informações críticas sobre a força de trabalho da organização. Através de sua estrutura organizada e eficiente, ele facilita a tomada de decisões informadas com base em dados atualizados e bem formatados.', type='text')
+
+﻿// Documentação Técnica
+// Arquivo: gd_headcount.qvs
+// Última atualização: 06/08/2025 13:05:25
+# Documentação Técnica do Script QlikView
+
+## Nome do Arquivo
+**gd_headcount.qvs**
+
+## Data e Hora da Última Atualização
+**06/08/2025 13:05:25**
+
+## Descrição do que o Script Faz
+O script `gd_headcount.qvs` é responsável por processar e transformar dados relacionados ao headcount (contagem de funcionários) de uma organização. Ele gera tabelas de calendário, tempo de empresa, e carrega dados brutos de headcount e demissões, além de criar dimensões e fatos que serão utilizados em análises de recursos humanos. O script também realiza a limpeza e a organização dos dados, armazenando os resultados em arquivos QVD para uso posterior.
+
+## Lista Resumida dos Principais Componentes e Etapas
+
+1. **Configurações Regionais e de Formatação**
+   - Define separadores numéricos, formatos de moeda, data e hora, além de nomes de meses e dias em português.
+
+2. **Definição de Caminhos de Dados**
+   - Estabelece variáveis para os caminhos de acesso aos diferentes níveis de dados (bronze, silver, gold, etc.).
+
+3. **Criação do Calendário**
+   - Gera uma tabela de calendário (`gd_calendario_d`) com informações sobre datas, meses, anos, semanas e status de períodos (histórico ou futuro).
+
+4. **Criação do Tempo na Companhia**
+   - Gera uma tabela (`gd_tempo_companhia_d`) que categoriza o tempo de permanência dos funcionários na empresa em grupos gerenciais e operacionais.
+
+5. **Carregamento de Dados Brutos**
+   - Carrega dados de headcount, demissões, histórico de orçamento e posições a partir de arquivos QVD existentes, criando chaves de hierarquia e outras chaves de referência.
+
+6. **Criação de Dimensões**
+   - Cria várias dimensões (ex: `gd_employee_d`, `gd_hierarquia_d`, `gd_funcao_d`, etc.) a partir dos dados brutos, armazenando informações relevantes sobre funcionários, hierarquias, funções, seções e centros de custo.
+
+7. **Criação de Fatos**
+   - Gera tabelas de fatos (`gd_headcount_f`, `gd_termination_f`, etc.) que contêm dados consolidados sobre headcount e demissões, removendo campos desnecessários para otimizar o armazenamento.
+
+8. **Criação de Dimensões de Demissão**
+   - Cria dimensões específicas para demissões, incluindo status e tipo de funcionário.
+
+9. **Limpeza de Dados**
+   - Remove tabelas temporárias e dados brutos que não são mais necessários após a criação das tabelas finais.
+
+10. **Armazenamento dos Resultados**
+    - Armazena todas as tabelas geradas em arquivos QVD para uso futuro em análises e relatórios.
+
+## Conclusão
+O script `gd_headcount.qvs` é uma parte fundamental do processo de análise de dados de recursos humanos, permitindo a visualização e interpretação de informações críticas sobre a força de trabalho da organização. Através de sua estrutura organizada e eficiente, ele facilita a tomada de decisões informadas com base em dados atualizados e bem formatados.
+
+
 
 
 SET ThousandSep='.';
@@ -919,4 +1026,3 @@ Drop Table
 
 ;
 Exit script
-

@@ -1,3 +1,281 @@
+// Documentação Técnica
+// Arquivo: bz_headcount.qvs
+// Última atualização: 07/08/2025 10:18:38
+// Erro: nenhuma resposta gerada pela API.
+
+
+
+
+# Documentação Técnica do Script QlikView
+
+## Nome do Arquivo
+**bz_headcount.qvs**
+
+## Data e Hora da Última Atualização
+**06/08/2025 13:26:45**
+
+## Descrição do que o Script Faz
+O script QlikView `bz_headcount.qvs` é projetado para carregar, processar e armazenar dados relacionados ao headcount (contagem de funcionários) e informações associadas de uma organização. O script extrai dados de várias fontes, incluindo arquivos QVD e Excel, e os organiza em uma estrutura de camadas (Bronze, Silver e Gold) em um repositório específico. Além disso, o script realiza transformações nos dados, como renomeação de campos e formatação, para assegurar que as informações estejam prontas para análise e relatórios.
+
+## Lista Resumida dos Principais Componentes e Etapas
+
+1. **Configurações de Formatação:**
+   - Define separadores numéricos, formatos de moeda, data e hora, além de configurações regionais para o Brasil.
+   - Exemplos de configurações incluem:
+     - `SET ThousandSep='.';`
+     - `SET DecimalSep=',';`
+     - `SET MoneyFormat='R$#.##0,00;-R$#.##0,00';`
+
+2. **Definição de Caminhos de Acesso:**
+   - Estabelece variáveis para os caminhos de acesso às diferentes camadas de dados (Bronze, Silver, Gold) e fontes manuais.
+   - Exemplo de definição de caminho:
+     - `SET bronze_layer = 'lib://Eldorado Data Folder - 3 Recursos Humanos - People Analytics/01. HR Medallion/01. Bronze/';`
+
+3. **Carregamento de Dados:**
+   - **Headcount Atual:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV012_001.qvd` e armazena como `bz_headcount_f`.
+   - **Headcount Histórico (2014 a 2018):**
+     - Carrega dados do arquivo Excel `hc_historica_f.xlsx` e armazena como `bz_headcount_hist_f`.
+   - **Dados de Funcionários:**
+     - Carrega dados do arquivo QVD `0STA_DRMFUNSAL_001.qvd` e armazena como `bz_headcount_latest_f`.
+   - **Dados de Pessoas:**
+     - Carrega dados do arquivo QVD `0STA_DRMPESSOA_001.qvd` e armazena como `bz_pessoa_d`.
+   - **Hierarquia Organizacional:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV007_001.qvd` e armazena como `bz_hierarquia_d`.
+   - **Funções e Cargos:**
+     - Carrega dados do arquivo Excel `funcoes_d.xlsx` e armazena como `bz_excel_funcao_d`.
+   - **Filiais:**
+     - Carrega dados do arquivo Excel `filial_d.xlsx` e armazena como `bz_excel_filial_d`.
+   - **Tabela Salarial:**
+     - Carrega dados do arquivo Excel `tabela_salarial_d.xlsx` e armazena como `bz_excel_salario_d`.
+   - **Orçamento Histórico:**
+     - Carrega dados do arquivo Excel `hc_orcamento_historico.xlsx` e armazena como `bz_excel_hc_orcamento_historico_f`.
+   - **Estrutura de Centro de Custo:**
+     - Carrega dados do arquivo Excel `centro_de_custo_d.xlsx` e armazena como `bz_excel_estrutura_cc_d`.
+   - **Movimentos de Funcionários:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV043_001.qvd` e armazena como `bz_movimentos_f`.
+   - **Posições:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV033_001.qvd` e armazena como `bz_posicoes_f`.
+   - **Headcount Offshore:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV046_001.qvd` e armazena como `bz_headcount_offshore_f`.
+   - **Posições Abertas:**
+     - Carrega dados do arquivo Excel `posicoes_abertas.xlsx` e armazena como `bz_excel_posicoes_f`.
+   - **Centro de Custo Externo:**
+     - Carrega dados do arquivo QVD `TRFN_CC.CL.qvd` e armazena como `bz_externo_centro_custo_d`.
+
+4. **Armazenamento dos Dados:**
+   - Os dados carregados são armazenados em formato QVD nas respectivas camadas (Bronze) para uso posterior em análises e relatórios.
+
+5. **Limpeza de Tabelas:**
+   - Após o armazenamento, as tabelas temporárias são removidas para liberar memória e manter a eficiência do script.
+
+6. **Finalização do Script:**
+   - O script é finalizado com o comando `EXIT Script`, encerrando o processo de carregamento de dados.
+
+Essa documentação fornece uma visão geral do funcionamento do script `bz_headcount.qvs`, suas principais etapas e a estrutura de dados que ele manipula, facilitando a compreensão e manutenção por parte de outros desenvolvedores e analistas.
+
+Documentação Técnica do Script QlikView
+
+## Nome do Arquivo
+**bz_headcount.qvs**
+
+## Data e Hora da Última Atualização
+**06/08/2025 13:26:45**
+
+## Descrição do que o Script Faz
+O script QlikView `bz_headcount.qvs` é projetado para carregar, processar e armazenar dados relacionados ao headcount (contagem de funcionários) e informações associadas de uma organização. O script extrai dados de várias fontes, incluindo arquivos QVD e Excel, e os organiza em uma estrutura de camadas (Bronze, Silver e Gold) em um repositório específico. Além disso, o script realiza transformações nos dados, como renomeação de campos e formatação, para assegurar que as informações estejam prontas para análise e relatórios.
+
+## Lista Resumida dos Principais Componentes e Etapas
+
+1. **Configurações de Formatação:**
+   - Define separadores numéricos, formatos de moeda, data e hora, além de configurações regionais para o Brasil.
+   - Exemplos de configurações incluem:
+     - `SET ThousandSep='.';`
+     - `SET DecimalSep=',';`
+     - `SET MoneyFormat='R$#.##0,00;-R$#.##0,00';`
+
+2. **Definição de Caminhos de Acesso:**
+   - Estabelece variáveis para os caminhos de acesso às diferentes camadas de dados (Bronze, Silver, Gold) e fontes manuais.
+   - Exemplo de definição de caminho:
+     - `SET bronze_layer = 'lib://Eldorado Data Folder - 3 Recursos Humanos - People Analytics/01. HR Medallion/01. Bronze/';`
+
+3. **Carregamento de Dados:**
+   - **Headcount Atual:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV012_001.qvd` e armazena como `bz_headcount_f`.
+   - **Headcount Histórico (2014 a 2018):**
+     - Carrega dados do arquivo Excel `hc_historica_f.xlsx` e armazena como `bz_headcount_hist_f`.
+   - **Dados de Funcionários:**
+     - Carrega dados do arquivo QVD `0STA_DRMFUNSAL_001.qvd` e armazena como `bz_headcount_latest_f`.
+   - **Dados de Pessoas:**
+     - Carrega dados do arquivo QVD `0STA_DRMPESSOA_001.qvd` e armazena como `bz_pessoa_d`.
+   - **Hierarquia Organizacional:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV007_001.qvd` e armazena como `bz_hierarquia_d`.
+   - **Funções e Cargos:**
+     - Carrega dados do arquivo Excel `funcoes_d.xlsx` e armazena como `bz_excel_funcao_d`.
+   - **Filiais:**
+     - Carrega dados do arquivo Excel `filial_d.xlsx` e armazena como `bz_excel_filial_d`.
+   - **Tabela Salarial:**
+     - Carrega dados do arquivo Excel `tabela_salarial_d.xlsx` e armazena como `bz_excel_salario_d`.
+   - **Orçamento Histórico:**
+     - Carrega dados do arquivo Excel `hc_orcamento_historico.xlsx` e armazena como `bz_excel_hc_orcamento_historico_f`.
+   - **Estrutura de Centro de Custo:**
+     - Carrega dados do arquivo Excel `centro_de_custo_d.xlsx` e armazena como `bz_excel_estrutura_cc_d`.
+   - **Movimentos de Funcionários:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV043_001.qvd` e armazena como `bz_movimentos_f`.
+   - **Posições:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV033_001.qvd` e armazena como `bz_posicoes_f`.
+   - **Headcount Offshore:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV046_001.qvd` e armazena como `bz_headcount_offshore_f`.
+   - **Posições Abertas:**
+     - Carrega dados do arquivo Excel `posicoes_abertas.xlsx` e armazena como `bz_excel_posicoes_f`.
+   - **Centro de Custo Externo:**
+     - Carrega dados do arquivo QVD `TRFN_CC.CL.qvd` e armazena como `bz_externo_centro_custo_d`.
+
+4. **Armazenamento dos Dados:**
+   - Os dados carregados são armazenados em formato QVD nas respectivas camadas (Bronze) para uso posterior em análises e relatórios.
+
+5. **Limpeza de Tabelas:**
+   - Após o armazenamento, as tabelas temporárias são removidas para liberar memória e manter a eficiência do script.
+
+6. **Finalização do Script:**
+   - O script é finalizado com o comando `EXIT Script`, encerrando o processo de carregamento de dados.
+
+Essa documentação fornece uma visão geral do funcionamento do script `bz_headcount.qvs`, suas principais etapas e a estrutura de dados que ele manipula, facilitando a compreensão e manutenção por parte de outros desenvolvedores e analistas.
+
+TextBlock(citations=None, text="Documentação Técnica do Script QlikView\n\n## Nome do Arquivo\n**bz_headcount.qvs**\n\n## Data e Hora da Última Atualização\n**06/08/2025 13:26:45**\n\n## Descrição do que o Script Faz\nO script QlikView `bz_headcount.qvs` é projetado para carregar, processar e armazenar dados relacionados ao headcount (contagem de funcionários) e informações associadas de uma organização. O script extrai dados de várias fontes, incluindo arquivos QVD e Excel, e os organiza em uma estrutura de camadas (Bronze, Silver e Gold) em um repositório específico. Além disso, o script realiza transformações nos dados, como renomeação de campos e formatação, para assegurar que as informações estejam prontas para análise e relatórios.\n\n## Lista Resumida dos Principais Componentes e Etapas\n\n1. **Configurações de Formatação:**\n   - Define separadores numéricos, formatos de moeda, data e hora, além de configurações regionais para o Brasil.\n   - Exemplos de configurações incluem:\n     - `SET ThousandSep='.';`\n     - `SET DecimalSep=',';`\n     - `SET MoneyFormat='R$#.##0,00;-R$#.##0,00';`\n\n2. **Definição de Caminhos de Acesso:**\n   - Estabelece variáveis para os caminhos de acesso às diferentes camadas de dados (Bronze, Silver, Gold) e fontes manuais.\n   - Exemplo de definição de caminho:\n     - `SET bronze_layer = 'lib://Eldorado Data Folder - 3 Recursos Humanos - People Analytics/01. HR Medallion/01. Bronze/';`\n\n3. **Carregamento de Dados:**\n   - **Headcount Atual:**\n     - Carrega dados do arquivo QVD `0STA_RHRMV012_001.qvd` e armazena como `bz_headcount_f`.\n   - **Headcount Histórico (2014 a 2018):**\n     - Carrega dados do arquivo Excel `hc_historica_f.xlsx` e armazena como `bz_headcount_hist_f`.\n   - **Dados de Funcionários:**\n     - Carrega dados do arquivo QVD `0STA_DRMFUNSAL_001.qvd` e armazena como `bz_headcount_latest_f`.\n   - **Dados de Pessoas:**\n     - Carrega dados do arquivo QVD `0STA_DRMPESSOA_001.qvd` e armazena como `bz_pessoa_d`.\n   - **Hierarquia Organizacional:**\n     - Carrega dados do arquivo QVD `0STA_RHRMV007_001.qvd` e armazena como `bz_hierarquia_d`.\n   - **Funções e Cargos:**\n     - Carrega dados do arquivo Excel `funcoes_d.xlsx` e armazena como `bz_excel_funcao_d`.\n   - **Filiais:**\n     - Carrega dados do arquivo Excel `filial_d.xlsx` e armazena como `bz_excel_filial_d`.\n   - **Tabela Salarial:**\n     - Carrega dados do arquivo Excel `tabela_salarial_d.xlsx` e armazena como `bz_excel_salario_d`.\n   - **Orçamento Histórico:**\n     - Carrega dados do arquivo Excel `hc_orcamento_historico.xlsx` e armazena como `bz_excel_hc_orcamento_historico_f`.\n   - **Estrutura de Centro de Custo:**\n     - Carrega dados do arquivo Excel `centro_de_custo_d.xlsx` e armazena como `bz_excel_estrutura_cc_d`.\n   - **Movimentos de Funcionários:**\n     - Carrega dados do arquivo QVD `0STA_RHRM", type='text')
+
+TextBlock(citations=None, text="# Documentação Técnica do Script QlikView\n\n## Nome do Arquivo\n**bz_headcount.qvs**\n\n## Data e Hora da Última Atualização\n**06/08/2025 13:26:45**\n\n## Descrição do que o Script Faz\nO script QlikView `bz_headcount.qvs` é projetado para carregar, processar e armazenar dados relacionados ao headcount (contagem de funcionários) e informações associadas de uma organização. O script extrai dados de várias fontes, incluindo arquivos QVD e Excel, e os organiza em uma estrutura de camadas (Bronze, Silver e Gold) em um repositório específico. Além disso, o script realiza transformações nos dados, como renomeação de campos e formatação, para assegurar que as informações estejam prontas para análise e relatórios.\n\n## Lista Resumida dos Principais Componentes e Etapas\n\n1. **Configurações de Formatação:**\n   - Define separadores numéricos, formatos de moeda, data e hora, além de configurações regionais para o Brasil.\n   - Exemplos de configurações incluem:\n     - `SET ThousandSep='.';`\n     - `SET DecimalSep=',';`\n     - `SET MoneyFormat='R$#.##0,00;-R$#.##0,00';`\n\n2. **Definição de Caminhos de Acesso:**\n   - Estabelece variáveis para os caminhos de acesso às diferentes camadas de dados (Bronze, Silver, Gold) e fontes manuais.\n   - Exemplo de definição de caminho:\n     - `SET bronze_layer = 'lib://Eldorado Data Folder - 3 Recursos Humanos - People Analytics/01. HR Medallion/01. Bronze/';`\n\n3. **Carregamento de Dados:**\n   - **Headcount Atual:**\n     - Carrega dados do arquivo QVD `0STA_RHRMV012_001.qvd` e armazena como `bz_headcount_f`.\n   - **Headcount Histórico (2014 a 2018):**\n     - Carrega dados do arquivo Excel `hc_historica_f.xlsx` e armazena como `bz_headcount_hist_f`.\n   - **Dados de Funcionários:**\n     - Carrega dados do arquivo QVD `0STA_DRMFUNSAL_001.qvd` e armazena como `bz_headcount_latest_f`.\n   - **Dados de Pessoas:**\n     - Carrega dados do arquivo QVD `0STA_DRMPESSOA_001.qvd` e armazena como `bz_pessoa_d`.\n   - **Hierarquia Organizacional:**\n     - Carrega dados do arquivo QVD `0STA_RHRMV007_001.qvd` e armazena como `bz_hierarquia_d`.\n   - **Funções e Cargos:**\n     - Carrega dados do arquivo Excel `funcoes_d.xlsx` e armazena como `bz_excel_funcao_d`.\n   - **Filiais:**\n     - Carrega dados do arquivo Excel `filial_d.xlsx` e armazena como `bz_excel_filial_d`.\n   - **Tabela Salarial:**\n     - Carrega dados do arquivo Excel `tabela_salarial_d.xlsx` e armazena como `bz_excel_salario_d`.\n   - **Orçamento Histórico:**\n     - Carrega dados do arquivo Excel `hc_orcamento_historico.xlsx` e armazena como `bz_excel_hc_orcamento_historico_f`.\n   - **Estrutura de Centro de Custo:**\n     - Carrega dados do arquivo Excel `centro_de_custo_d.xlsx` e armazena como `bz_excel_estrutura_cc_d`.\n   - **Movimentos de Funcionários:**\n     - Carrega dados do arquivo QVD `0STA_RH", type='text')
+
+# Documentação Técnica do Script QlikView
+
+## Nome do Arquivo
+**bz_headcount.qvs**
+
+## Data e Hora da Última Atualização
+**06/08/2025 13:26:45**
+
+## Descrição do que o Script Faz
+O script QlikView `bz_headcount.qvs` é projetado para carregar, processar e armazenar dados relacionados ao headcount (contagem de funcionários) e informações associadas de uma organização. O script extrai dados de várias fontes, incluindo arquivos QVD e Excel, e os organiza em uma estrutura de camadas (Bronze, Silver e Gold) em um repositório específico. Além disso, o script realiza transformações nos dados, como renomeação de campos e formatação, para assegurar que as informações estejam prontas para análise e relatórios.
+
+## Lista Resumida dos Principais Componentes e Etapas
+
+1. **Configurações de Formatação:**
+   - Define separadores numéricos, formatos de moeda, data e hora, além de configurações regionais para o Brasil.
+   - Exemplos de configurações incluem:
+     - `SET ThousandSep='.';`
+     - `SET DecimalSep=',';`
+     - `SET MoneyFormat='R$#.##0,00;-R$#.##0,00';`
+
+2. **Definição de Caminhos de Acesso:**
+   - Estabelece variáveis para os caminhos de acesso às diferentes camadas de dados (Bronze, Silver, Gold) e fontes manuais.
+   - Exemplo de definição de caminho:
+     - `SET bronze_layer = 'lib://Eldorado Data Folder - 3 Recursos Humanos - People Analytics/01. HR Medallion/01. Bronze/';`
+
+3. **Carregamento de Dados:**
+   - **Headcount Atual:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV012_001.qvd` e armazena como `bz_headcount_f`.
+   - **Headcount Histórico (2014 a 2018):**
+     - Carrega dados do arquivo Excel `hc_historica_f.xlsx` e armazena como `bz_headcount_hist_f`.
+   - **Dados de Funcionários:**
+     - Carrega dados do arquivo QVD `0STA_DRMFUNSAL_001.qvd` e armazena como `bz_headcount_latest_f`.
+   - **Dados de Pessoas:**
+     - Carrega dados do arquivo QVD `0STA_DRMPESSOA_001.qvd` e armazena como `bz_pessoa_d`.
+   - **Hierarquia Organizacional:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV007_001.qvd` e armazena como `bz_hierarquia_d`.
+   - **Funções e Cargos:**
+     - Carrega dados do arquivo Excel `funcoes_d.xlsx` e armazena como `bz_excel_funcao_d`.
+   - **Filiais:**
+     - Carrega dados do arquivo Excel `filial_d.xlsx` e armazena como `bz_excel_filial_d`.
+   - **Tabela Salarial:**
+     - Carrega dados do arquivo Excel `tabela_salarial_d.xlsx` e armazena como `bz_excel_salario_d`.
+   - **Orçamento Histórico:**
+     - Carrega dados do arquivo Excel `hc_orcamento_historico.xlsx` e armazena como `bz_excel_hc_orcamento_historico_f`.
+   - **Estrutura de Centro de Custo:**
+     - Carrega dados do arquivo Excel `centro_de_custo_d.xlsx` e armazena como `bz_excel_estrutura_cc_d`.
+   - **Movimentos de Funcionários:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV043_001.qvd` e armazena como `bz_movimentos_f`.
+   - **Posições:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV033_001.qvd` e armazena como `bz_posicoes_f`.
+   - **Headcount Offshore:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV046_001.qvd` e armazena como `bz_headcount_offshore_f`.
+   - **Posições Abertas:**
+     - Carrega dados do arquivo Excel `posicoes_abertas.xlsx` e armazena como `bz_excel_posicoes_f`.
+   - **Centro de Custo Externo:**
+     - Carrega dados do arquivo QVD `TRFN_CC.CL.qvd` e armazena como `bz_externo_centro_custo_d`.
+
+4. **Armazenamento dos Dados:**
+   - Os dados carregados são armazenados em formato QVD nas respectivas camadas (Bronze) para uso posterior em análises e relatórios.
+
+5. **Limpeza de Tabelas:**
+   - Após o armazenamento, as tabelas temporárias são removidas para liberar memória e manter a eficiência do script.
+
+6. **Finalização do Script:**
+   - O script é finalizado com o comando `EXIT Script`, encerrando o processo de carregamento de dados.
+
+Essa documentação fornece uma visão geral do funcionamento do script `bz_headcount.qvs`, suas principais etapas e a estrutura de dados que ele manipula, facilitando a compreensão e manutenção por parte de outros desenvolvedores e analistas.
+
+# Documentação Técnica do Script QlikView
+
+## Nome do Arquivo
+**bz_headcount.qvs**
+
+## Data e Hora da Última Atualização
+**06/08/2025 13:05:05**
+
+## Descrição do que o Script Faz
+O script QlikView `bz_headcount.qvs` é responsável por carregar, processar e armazenar dados relacionados ao headcount (contagem de funcionários) e informações associadas de uma organização. Ele extrai dados de diversas fontes, incluindo arquivos QVD e Excel, e os armazena em uma estrutura organizada em camadas (Bronze, Silver e Gold) dentro de um repositório específico. O script também realiza transformações nos dados, como renomeação de campos e formatação, para garantir que as informações estejam prontas para análise.
+
+## Lista Resumida dos Principais Componentes e Etapas
+
+1. **Configurações de Formatação:**
+   - Define separadores numéricos, formatos de moeda, data e hora, além de configurações regionais para o Brasil.
+
+2. **Definição de Caminhos de Acesso:**
+   - Estabelece variáveis para os caminhos de acesso às diferentes camadas de dados (Bronze, Silver, Gold) e fontes manuais.
+
+3. **Carregamento de Dados:**
+   - **Headcount Atual:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV012_001.qvd` e armazena como `bz_headcount_f`.
+   - **Headcount Histórico (2014 a 2018):**
+     - Carrega dados do arquivo Excel `hc_historica_f.xlsx` e armazena como `bz_headcount_hist_f`.
+   - **Dados de Funcionários:**
+     - Carrega dados do arquivo QVD `0STA_DRMFUNSAL_001.qvd` e armazena como `bz_headcount_latest_f`.
+   - **Dados de Pessoas:**
+     - Carrega dados do arquivo QVD `0STA_DRMPESSOA_001.qvd` e armazena como `bz_pessoa_d`.
+   - **Hierarquia Organizacional:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV007_001.qvd` e armazena como `bz_hierarquia_d`.
+   - **Funções e Cargos:**
+     - Carrega dados do arquivo Excel `funcoes_d.xlsx` e armazena como `bz_excel_funcao_d`.
+   - **Filiais:**
+     - Carrega dados do arquivo Excel `filial_d.xlsx` e armazena como `bz_excel_filial_d`.
+   - **Tabela Salarial:**
+     - Carrega dados do arquivo Excel `tabela_salarial_d.xlsx` e armazena como `bz_excel_salario_d`.
+   - **Orçamento Histórico:**
+     - Carrega dados do arquivo Excel `hc_orcamento_historico.xlsx` e armazena como `bz_excel_hc_orcamento_historico_f`.
+   - **Estrutura de Centro de Custo:**
+     - Carrega dados do arquivo Excel `centro_de_custo_d.xlsx` e armazena como `bz_excel_estrutura_cc_d`.
+   - **Movimentos de Funcionários:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV043_001.qvd` e armazena como `bz_movimentos_f`.
+   - **Posições:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV033_001.qvd` e armazena como `bz_posicoes_f`.
+   - **Headcount Offshore:**
+     - Carrega dados do arquivo QVD `0STA_RHRMV046_001.qvd` e armazena como `bz_headcount_offshore_f`.
+   - **Posições Abertas:**
+     - Carrega dados do arquivo Excel `posicoes_abertas.xlsx` e armazena como `bz_excel_posicoes_f`.
+   - **Centro de Custo Externo:**
+     - Carrega dados do arquivo QVD `TRFN_CC.CL.qvd` e armazena como `bz_externo_centro_custo_d`.
+
+4. **Armazenamento dos Dados:**
+   - Os dados carregados são armazenados em formato QVD nas respectivas camadas (Bronze) para uso posterior em análises e relatórios.
+
+5. **Limpeza de Tabelas:**
+   - Após o armazenamento, as tabelas temporárias são removidas para liberar memória e manter a eficiência do script.
+
+6. **Finalização do Script:**
+   - O script é finalizado com o comando `EXIT Script`, encerrando o processo de carregamento de dados.
+
+Essa documentação fornece uma visão geral do funcionamento do script `bz_headcount.qvs`, suas principais etapas e a estrutura de dados que ele manipula.
+
 ﻿
 
 
