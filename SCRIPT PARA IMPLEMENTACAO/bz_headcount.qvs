@@ -1,4 +1,4 @@
-Documentação Técnica
+﻿Documentação Técnica
 Arquivo: bz_headcount.qvs
 Última atualização: 07/08/2025 13:49:14
 
@@ -411,12 +411,6 @@ Documentação Técnica
 Arquivo: bz_headcount.qvs
 Última atualização: 07/08/2025 12:33:25
 
-
-
-
-
-
-﻿
 
 
 SET ThousandSep='.';

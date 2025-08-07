@@ -80,6 +80,9 @@ O script `sv_headcount.qvs` executa um processo ETL (Extração, Transformação
 
 O script utiliza diversas funções do QlikView para manipulação de dados, como `LOAD`, `JOIN`, `CONCATENATE`, `IF`, `MATCH`, `APPLYMAP`, `FirstSortedValue`, `AutoNumberHash128`, `Peek`, `KeepChar`, `Trim`, `Capitalize`, `MonthEnd`, `MonthStart`, `AddMonths`, etc. A complexidade reflete um processo ETL robusto para a preparação dos dados de RH para análise.  Esta documentação descreve o script sem oferecer sugestões de melhoria. As datas de atualização registradas no cabeçalho do script podem ser diferentes da data real de atualização do código.
 
+
+
+
 Documentação Técnica
 Arquivo: sv_headcount.qvs
 Última atualização: 07/08/2025 13:25:47
