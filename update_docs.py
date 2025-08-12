@@ -1,74 +1,79 @@
 import os
 import time
 from datetime import datetime
-import google.generativeai as genai
-from fpdf import FPDF
+from mistralai import Mistral
+from markdown import markdown
+from xhtml2pdf import pisa 
 
-genai.configure(api_key="AIzaSyANW3dk0XXkTwx2Pip0lqRes-CYv0IvjdA")
-model = genai.GenerativeModel("gemini-1.5-flash")
+
+MISTRAL_API_KEY = "JmNoW35BSmQA7UJPpCCiqiru1m1MbODu"  # chave API do Mistral
+client = Mistral(api_key=MISTRAL_API_KEY)
 
 
 def gerar_documentacao_qvs(conteudo: str, nome_arquivo: str) -> str:
-    """Gera documentação para um arquivo QVS usando a API Google Gemini."""
+    """Gera documentação para um arquivo QVS usando a API Mistral."""
     data_hora = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
     prompt = f"""
-Você é especialista em QlikView e documentação técnica.
+Você é um gerador de documentação formal e clara.
 
-Faça uma documentação estilo de sulfite a4 enalise o script QVS abaixo e gere uma documentação clara e formal explicando o conteúdo do script, sem dar sugestões, em português, 
-contendo:
-- Resumo do que o script faz
-- Principais etapas (em tópicos)
+Gere uma explicação detalhada e bem organizada para o script QVS abaixo,
+no formato de um documento formal, mas que seja fácil de entender mesmo por
+pessoas que não têm conhecimento técnico.
+
+O texto deve ser:
+- Escrito em português claro e acessível.
+- Com tom formal e objetivo.
+- Sem termos técnicos complexos ou siglas sem explicação.
+- Organizado em seções e tópicos para facilitar a leitura.
+- Explicar o que o script faz, para que serve e como funciona de forma simplificada.
+- Incluir exemplos ilustrativos quando necessário.
+- Não sugerir alterações ou melhorias no código.
 
 Script:
 {conteudo}
     """
 
     try:
-        response = model.generate_content(prompt)
-        if hasattr(response, "text"):
-            conteudo_gerado = response.text.strip()
-        elif hasattr(response, "candidates") and len(response.candidates) > 0:
-            conteudo_gerado = response.candidates[0].output.strip()
-        else:
-            conteudo_gerado = ""
+        response = client.chat.complete(
+            model="mistral-large-latest",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        conteudo_gerado = response.choices[0].message.content.strip()
     except Exception as e:
-        print(f"Erro ao chamar API Gemini: {e}")
+        print(f"Erro ao chamar API Mistral: {e}")
         conteudo_gerado = ""
 
     cabecalho = (
-        f"Documentação Técnica\n"
-        f"Arquivo: {nome_arquivo}\n"
-        f"Última atualização: {data_hora}\n\n"
+        f"# Documentação Técnica\n\n"
+        f"**Arquivo:** `{nome_arquivo}`  \n"
+        f"**Última atualização:** {data_hora}\n\n"
         f"{conteudo_gerado}\n"
     )
     return cabecalho
 
 
-def salvar_documentacao_em_pdf(conteudo_doc: str, nome_arquivo: str):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_margins(25, 20, 20)
-    pdf.set_auto_page_break(auto=True, margin=20)
-    pdf.set_font("Arial", size=12)
+def salvar_documentacao_em_md_e_pdf(conteudo_doc: str, nome_arquivo: str):
+    """Salva a documentação em Markdown e converte para PDF usando xhtml2pdf."""
+    nome_base = os.path.splitext(nome_arquivo)[0]
+    nome_md = nome_base + "_documentacao.md"
+    nome_pdf = nome_base + "_documentacao.pdf"
 
-    for linha in conteudo_doc.splitlines():
-        pdf.cell(0, 8, txt=linha, ln=True)
-
-    nome_pdf = os.path.splitext(nome_arquivo)[0] + "_documentacao.pdf"
-    pdf.output(nome_pdf)
-    print(f"Documentação exportada para PDF: {nome_pdf}")
-
-
-def salvar_documentacao_em_md(conteudo_doc: str, nome_arquivo: str):
-    nome_md = os.path.splitext(nome_arquivo)[0] + "_documentacao.md"
     try:
+        # Salva como Markdown
         with open(nome_md, "w", encoding="utf-8") as f:
-            f.write("# Documentação Técnica\n\n")
             f.write(conteudo_doc)
-        print(f"Documentação exportada para Markdown: {nome_md}")
+        print(f"Markdown salvo: {nome_md}")
+
+        # Converte Markdown para HTML
+        html_content = markdown(conteudo_doc)
+
+        # Converte HTML para PDF usando xhtml2pdf
+        with open(nome_pdf, "wb") as f:
+            pisa.CreatePDF(html_content, dest=f)
+        print(f"PDF gerado com sucesso: {nome_pdf}")
     except Exception as e:
-        print(f"Erro ao salvar .md: {e}")
+        print(f"Erro ao salvar PDF: {e}")
 
 
 def atualizar_documentacao_qvs(diretorio: str):
@@ -81,6 +86,7 @@ def atualizar_documentacao_qvs(diretorio: str):
                 with open(caminho, "r", encoding="utf-8") as f:
                     conteudo = f.read()
 
+                # Remove comentários/documentação antiga do topo
                 linhas = conteudo.splitlines()
                 while linhas and linhas[0].strip().startswith("//"):
                     linhas.pop(0)
@@ -89,19 +95,20 @@ def atualizar_documentacao_qvs(diretorio: str):
                 print(f"Atualizando documentação: {caminho}")
                 nova_doc = gerar_documentacao_qvs(conteudo_sem_doc, file)
 
+                # Atualiza o .qvs inserindo a documentação no início
                 with open(caminho, "w", encoding="utf-8") as f:
                     f.write(nova_doc + "\n" + conteudo_sem_doc)
 
-                salvar_documentacao_em_pdf(nova_doc, file)
-                salvar_documentacao_em_md(nova_doc, file)
+                # Exportações
+                salvar_documentacao_em_md_e_pdf(nova_doc, file)
 
-                time.sleep(5)
+                # Evita sobrecarga de requisições
+                time.sleep(15)
 
 
 if __name__ == "__main__":
     atualizar_documentacao_qvs(".")
     print("Documentação atualizada para todos os arquivos .qvs e exportada para PDF e Markdown.")
-
 
 # import time
 # import os
@@ -113,17 +120,16 @@ if __name__ == "__main__":
 # def gerar_documentacao_qvs(conteudo: str, nome_arquivo: str) -> str:
 #     """Gera documentação para um arquivo QVS usando a API OpenAI."""
 #     data_hora = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
 #     prompt = f"""
-# Você é um especialista em QlikView e documentação técnica.
-# Analise o script QVS abaixo e gere uma documentação bem explicativa e formal em português, utilizando explicações 
-# em resumo e em tópicos, considere as linhas que começam com "//" como comentários.
+# Faça uma documentação bem explicativa, analise o script QVS abaixo e gere uma documentação clara e formal 
+# explicando o conteúdo do script, sem dar sugestões, em português, 
 # contendo:
-# - Nome do arquivo
-# - Data e hora da última atualização: {data_hora}
-# - Descrição do que o script faz
-# - Lista resumida dos principais componentes e etapas
+# - Resumo do que o script faz
+# - Principais etapas (em tópicos)
 
 # Arquivo: {nome_arquivo}
+# Data e Horário: {data_hora}
 
 # Script:
 # {conteudo}
@@ -169,5 +175,3 @@ if __name__ == "__main__":
 # if __name__ == "__main__":
 #     atualizar_documentacao_qvs(".")
 #     print("Documentação atualizada para todos os arquivos .qvs")
-
-

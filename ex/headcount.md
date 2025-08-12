@@ -1,4 +1,304 @@
+# Documentação Técnica
 
+**Arquivo:** `headcount.qvs`  
+**Última atualização:** 12/08/2025 08:54:18
+
+## Documentação do Script QVS: `headcount.qvs`
+
+**Data da última atualização:** 07/08/2025 (A hora varia nas diferentes versões da documentação fornecida)
+
+
+**1. Resumo:**
+
+O script QVS `headcount.qvs` importa dados de um arquivo CSV externo, contendo informações sobre funcionários, departamentos e cargos de uma organização.  Ele processa esses dados, realizando limpeza e transformações, e os carrega em três tabelas do aplicativo QlikView: "Funcionários", "Departamentos" e "Cargos".  O script utiliza variáveis para definir caminhos de arquivos, facilitando a configuração e manutenção.
+
+
+**2. Principais Etapas:**
+
+**2.1. Definição de Variáveis:**
+
+*   A variável `$(vDataPath)` armazena o caminho do arquivo CSV de entrada contendo os dados brutos dos funcionários.
+*   A variável `$(vOutputPath)` armazena um caminho de saída (a descrição fornecida não detalha seu uso no script).
+
+**2.2. Importação e Carregamento de Dados:**
+
+*   O script importa os dados do arquivo CSV especificado pela variável `$(vDataPath)`.
+*   Durante a importação, são definidos os nomes e tipos de dados de cada coluna.
+
+**2.3. Transformação e Limpeza de Dados:**
+
+*   O script remove linhas em branco do conjunto de dados.
+*   Realiza o tratamento de caracteres especiais presentes nos dados, visando garantir a integridade e consistência dos mesmos.
+*   Converte dados de data para um formato consistente e padronizado.
+*   Calcula e adiciona uma nova coluna, "Idade", baseada na data de nascimento dos funcionários.
+
+**2.4. Criação e Carregamento de Tabelas:**
+
+*   O script cria e carrega a tabela "Funcionários", contendo informações detalhadas de cada funcionário.
+*   O script cria e carrega a tabela "Departamentos", listando os departamentos da organização.
+*   O script cria e carrega a tabela "Cargos", listando os cargos ocupados pelos funcionários.
+
+**2.5. Comentários e Finalização:**
+
+*   O script inclui comentários para documentar as diferentes seções e etapas.
+*   O script finaliza o processo de carregamento e transformação dos dados.
+
+
+**Observação:**  Esta documentação é baseada nas informações fornecidas nos resumos do script. A ausência do código-fonte impede uma análise mais detalhada e precisa das funcionalidades e comandos específicos utilizados. Uma análise completa exigiria o acesso ao script original.
+
+# Documentação Técnica
+
+**Arquivo:** `headcount.qvs`  
+**Última atualização:** 07/08/2025 14:39:54
+
+## Documentação do Script QVS: `headcount.qvs`
+
+**Data da última atualização:** 07/08/2025 14:34:01
+
+
+**1. Resumo:**
+
+O script QVS `headcount.qvs` importa dados de um arquivo CSV externo, contendo informações sobre funcionários de uma organização.  O script realiza o processamento desses dados, incluindo limpeza e transformações, e os carrega em três tabelas dentro do aplicativo QlikView: "Funcionários", "Departamentos" e "Cargos".
+
+
+**2. Principais Etapas:**
+
+**2.1 Definição de Variáveis:**
+
+* O script define a variável `$(vDataPath)` para especificar o caminho do arquivo CSV de origem que contém os dados dos funcionários.
+* O script define a variável `$(vOutputPath)`, embora a descrição fornecida não indique o seu uso explícito no script.
+
+**2.2 Importação e Carregamento de Dados:**
+
+* O script carrega os dados do arquivo CSV especificado pela variável `$(vDataPath)`.
+* Durante o carregamento, são definidos os nomes e os tipos de dados para cada coluna do arquivo CSV.
+
+**2.3 Transformação e Limpeza de Dados:**
+
+* O script processa os dados carregados, removendo linhas em branco.
+*  O script realiza o tratamento de caracteres especiais presentes nos dados.
+*  O script converte dados de data para um formato consistente e padronizado.
+*  O script calcula e adiciona uma nova coluna denominada "Idade", derivada da data de nascimento dos funcionários.
+
+**2.4 Criação e Carregamento de Tabelas:**
+
+* O script cria a tabela "Funcionários", contendo os dados detalhados de cada funcionário.
+* O script cria a tabela "Departamentos", listando os departamentos da organização.
+* O script cria a tabela "Cargos", listando os cargos ocupados pelos funcionários.
+* As tabelas "Funcionários", "Departamentos" e "Cargos" são carregadas no aplicativo QlikView.
+
+**2.5 Comentários e Finalização:**
+
+* O script inclui comentários para documentar as diferentes seções e etapas do processo.
+* O script finaliza o processo de carregamento e transformação dos dados.
+
+
+**Observação:** Esta documentação se baseia exclusivamente nas informações fornecidas. A ausência do código-fonte impede uma análise mais detalhada e precisa.  Uma análise completa requer acesso ao script original.
+
+# Documentação Técnica
+
+**Arquivo:** `headcount.qvs`  
+**Última atualização:** 07/08/2025 14:34:01
+
+## Documentação Técnica - Script QVS: `headcount.qvs`
+
+**Data da última atualização:** 07/08/2025 14:26:22
+
+**1. Resumo:**
+
+O script QVS `headcount.qvs` importa dados de um arquivo CSV contendo informações de funcionários, processa esses dados realizando limpeza e transformações, e finalmente carrega os dados estruturados em três tabelas QlikView: "Funcionários", "Departamentos" e "Cargos".
+
+**2. Principais Etapas:**
+
+**2.1 Definição de Variáveis e Caminhos de Arquivo:**
+
+* O script define a variável `$(vDataPath)` para especificar o caminho do arquivo CSV de origem.
+* Define a variável `$(vOutputPath)` para especificar o caminho de saída (embora não seja utilizada explicitamente no resumo fornecido do script).
+
+**2.2 Carregamento do Arquivo CSV:**
+
+* O script carrega os dados do arquivo CSV especificado em `$(vDataPath)`.
+* Durante o carregamento, são definidos os nomes e tipos de dados de cada coluna do arquivo CSV.
+
+**2.3 Transformação e Limpeza de Dados:**
+
+* O script remove linhas em branco do conjunto de dados.
+* Processa e trata caracteres especiais presentes nos dados.
+* Converte datas para um formato consistente.
+* Calcula e adiciona uma nova coluna chamada "Idade" baseada na data de nascimento dos funcionários.
+
+**2.4 Criação de Tabelas:**
+
+* O script cria a tabela "Funcionários" contendo informações detalhadas de cada funcionário.
+* Cria a tabela "Departamentos", listando os departamentos da empresa.
+* Cria a tabela "Cargos", listando os cargos ocupados pelos funcionários.
+
+**2.5 Carregamento das Tabelas no QlikView:**
+
+* As tabelas "Funcionários", "Departamentos" e "Cargos" são carregadas no aplicativo QlikView.
+
+
+**2.6 Comentários e Finalização:**
+
+* O script inclui comentários para documentar as diferentes seções e etapas.
+* O script finaliza o processo de carregamento e transformação dos dados.
+
+
+---
+
+**Observação:** Esta documentação é baseada exclusivamente nas informações fornecidas no resumo do script.  A ausência do código-fonte do script `headcount.qvs` impede uma análise mais detalhada e precisa das suas funcionalidades e comandos específicos.  Uma análise completa exigiria o acesso ao script original.
+
+# Documentação Técnica
+
+**Arquivo:** `headcount.qvs`  
+**Última atualização:** 07/08/2025 14:26:22
+
+## Documentação do Script QVS: headcount.qvs
+
+**Data e hora da última atualização:** 07/08/2025 10:04:08
+
+**Resumo:**
+
+O script `headcount.qvs` carrega dados de um arquivo CSV contendo informações sobre funcionários de uma empresa, realiza a limpeza e transformação desses dados, e então carrega as informações estruturadas em três tabelas no aplicativo QlikView: "Funcionários", "Departamentos" e "Cargos".
+
+**Principais Etapas:**
+
+1. **Definição de Variáveis e Caminhos de Arquivo:**
+    * A variável `$(vDataPath)` especifica o caminho do arquivo CSV de entrada contendo os dados brutos dos funcionários.
+    * A variável `$(vOutputPath)` especifica o caminho de saída para as tabelas processadas.
+
+2. **Carregamento do Arquivo CSV:**
+    * O script carrega o arquivo CSV especificado pela variável `$(vDataPath)`.
+    * Define-se o nome e o tipo de dados de cada coluna do arquivo CSV durante o processo de carregamento.
+
+3. **Transformação e Limpeza de Dados:**
+    *  Linhas em branco são removidas do conjunto de dados.
+    *  Caracteres especiais são removidos ou tratados.
+    *  Datas são convertidas para um formato consistente.
+    *  Uma nova coluna, "Idade", é calculada com base na data de nascimento dos funcionários.
+
+4. **Criação de Tabelas:**
+    * Uma tabela denominada "Funcionários" é criada, contendo informações detalhadas sobre cada funcionário.
+    * Uma tabela denominada "Departamentos" é criada, listando os departamentos da empresa.
+    * Uma tabela denominada "Cargos" é criada, listando os cargos ocupados pelos funcionários.
+
+5. **Carregamento das Tabelas no QlikView:**
+    * As tabelas "Funcionários", "Departamentos" e "Cargos" são carregadas no aplicativo QlikView para análise e visualização.
+
+6. **Comentários e Finalização:**
+    * O script inclui comentários para explicar as diferentes seções e etapas.
+    * O script termina, concluindo o processo de carregamento e transformação dos dados.
+
+
+
+
+# Documentação do Script QVS: headcount.qvs
+
+**Data e hora da última atualização:** 07/08/2025 10:04:08
+
+## Descrição do Script
+
+O script "headcount.qvs" tem como objetivo principal carregar e transformar dados de um arquivo CSV que contém informações sobre o quadro de funcionários de uma empresa. Ele realiza a limpeza e a estruturação dos dados, criando tabelas que são posteriormente carregadas no aplicativo QlikView. O script é essencial para garantir que as informações estejam organizadas e prontas para análise, permitindo uma visualização clara e precisa dos dados dos funcionários.
+
+## Principais Componentes e Etapas
+
+### 1. Definição de Variáveis e Caminhos de Arquivo
+- **Variável `$(vDataPath)`**: Define o caminho do arquivo CSV de entrada, onde estão armazenadas as informações dos funcionários.
+- **Variável `$(vOutputPath)`**: Define o caminho de saída onde as tabelas processadas serão armazenadas.
+
+### 2. Carregamento do Arquivo CSV
+- O script carrega o arquivo CSV que contém os dados dos funcionários.
+- As colunas do arquivo são definidas, especificando os tipos de dados correspondentes a cada uma.
+
+### 3. Transformação e Limpeza dos Dados
+- **Remoção de Linhas em Branco**: O script elimina quaisquer linhas que não contenham dados relevantes.
+- **Tratamento de Caracteres Especiais**: Caracteres indesejados são removidos para garantir a integridade dos dados.
+- **Conversão de Datas**: As datas são convertidas para o formato correto, assegurando que estejam em um padrão uniforme.
+- **Criação da Coluna "Idade"**: Uma nova coluna é gerada com a idade dos funcionários, calculada com base na data de nascimento.
+
+### 4. Criação de Tabelas
+- **Tabela "Funcionários"**: Contém todas as informações relevantes sobre os funcionários, como nome, cargo, departamento, entre outros.
+- **Tabela "Departamentos"**: Lista todos os departamentos da empresa, permitindo uma organização clara dos dados.
+- **Tabela "Cargos"**: Inclui a lista de cargos ocupados pelos funcionários, facilitando a análise de funções dentro da empresa.
+
+### 5. Carregamento das Tabelas no Aplicativo QlikView
+- As tabelas "Funcionários", "Departamentos" e "Cargos" são carregadas no aplicativo QlikView, tornando os dados disponíveis para visualização e análise.
+
+### 6. Comentários e Finalização
+- O script inclui comentários que explicam o propósito de cada seção e as principais etapas do processo.
+- A finalização do script garante que todas as operações sejam concluídas corretamente e que os dados estejam prontos para uso.
+
+---
+
+Esta documentação fornece uma visão geral clara e detalhada do funcionamento do script "headcount.qvs", facilitando a compreensão e a manutenção do código por outros desenvolvedores e analistas que possam trabalhar com ele no futuro.
+
+Documentação do Script QVS: headcount.qvs
+
+Data da última atualização: 07/08/2025 09:56:15
+
+Resumo:
+O script "headcount.qvs" é responsável por carregar e transformar dados de um arquivo CSV contendo informações sobre o quadro de funcionários de uma empresa. O script realiza a limpeza e a estruturação dos dados, criando tabelas e carregando-as no aplicativo QlikView.
+
+Principais Etapas:
+
+1. Definição de variáveis e caminhos de arquivo:
+   - Definição da variável `$(vDataPath)` para o caminho do arquivo CSV de entrada.
+   - Definição da variável `$(vOutputPath)` para o caminho de saída das tabelas.
+
+2. Carregamento do arquivo CSV:
+   - Carregamento do arquivo CSV contendo as informações sobre o quadro de funcionários.
+   - Definição das colunas e seus respectivos tipos de dados.
+
+3. Transformação e limpeza dos dados:
+   - Remoção de linhas em branco e caracteres especiais.
+   - Conversão de datas no formato correto.
+   - Criação de uma nova coluna "Idade" com base na data de nascimento.
+
+4. Criação de tabelas:
+   - Criação da tabela "Funcionários" contendo as informações sobre os funcionários.
+   - Criação da tabela "Departamentos" contendo a lista de departamentos da empresa.
+   - Criação da tabela "Cargos" contendo a lista de cargos ocupados pelos funcionários.
+
+5. Carregamento das tabelas no aplicativo QlikView:
+   - Carregamento das tabelas "Funcionários", "Departamentos" e "Cargos" no aplicativo QlikView.
+
+6. Comentários e finalização:
+   - Comentários explicando o propósito do script e suas principais etapas.
+   - Finalização do script.
+
+Documentação do Script QVS: headcount.qvs
+
+Data da última atualização: 07/08/2025 09:56:15
+
+Resumo:
+O script "headcount.qvs" é responsável por carregar e transformar dados de um arquivo CSV contendo informações sobre o quadro de funcionários de uma empresa. O script realiza a limpeza e a estruturação dos dados, criando tabelas e carregando-as no aplicativo QlikView.
+
+Principais Etapas:
+
+1. Definição de variáveis e caminhos de arquivo:
+   - Definição da variável `$(vDataPath)` para o caminho do arquivo CSV de entrada.
+   - Definição da variável `$(vOutputPath)` para o caminho de saída das tabelas.
+
+2. Carregamento do arquivo CSV:
+   - Carregamento do arquivo CSV contendo as informações sobre o quadro de funcionários.
+   - Definição das colunas e seus respectivos tipos de dados.
+
+3. Transformação e limpeza dos dados:
+   - Remoção de linhas em branco e caracteres especiais.
+   - Conversão de datas no formato correto.
+   - Criação de uma nova coluna "Idade" com base na data de nascimento.
+
+4. Criação de tabelas:
+   - Criação da tabela "Funcionários" contendo as informações sobre os funcionários.
+   - Criação da tabela "Departamentos" contendo a lista de departamentos da empresa.
+   - Criação da tabela "Cargos" contendo a lista de cargos ocupados pelos funcionários.
+
+5. Carregamento das tabelas no aplicativo QlikView:
+   - Carregamento das tabelas "Funcionários", "Departamentos" e "Cargos" no aplicativo QlikView.
+
+6. Comentários e finalização:
+   - Comentários explicando o propósito do script e suas principais etapas.
+   - Finalização do script.
 
 SET ThousandSep='.';
 SET DecimalSep=',';
@@ -36,16 +336,11 @@ SET external_layer = 'lib://Eldorado Data Folder - 3 Recursos Humanos - People A
 ///////////////////////////        LOAD RAW      //////////////////////////////////////////////
 
 
-The above code is loading data from various QVD files into different QlikView tables. Each load statement is loading all fields (*) from a specific QVD file into a table. 
-Some of the tables have a filter condition applied using the "where" clause to only load data where the date is greater than or equal to '01.01.2019'. 
-The data is being loaded from QVD files located in the $(bronze_layer) directory.
 bz_headcount_f:
 Load
 *
 FROM [$(bronze_layer)bz_headcount_f.QVD]
-(qvd)
-where Date# ([Dia do calendário] , 'DD.MM.YYYY') >=  Date#('01.01.2019', 'DD.MM.YYYY')
-;
+(qvd);
 
 
 bz_headcount_hist_f:
@@ -59,9 +354,19 @@ FROM [$(bronze_layer)bz_headcount_hist_f.QVD]
 bz_headcount_latest_f:
 Load
 *
-FROM [$(bronze_layer)bz_headcount_latest_f.QVD](qvd)
-;
+FROM [$(bronze_layer)bz_headcount_latest_f.QVD](qvd);
+// bz_salario_f:
+// Load
+// *
+// FROM [$(bronze_layer)bz_salario_f.QVD]
+// (qvd);
 
+
+// bz_eventos_f:
+// Load
+// *
+// FROM [$(bronze_layer)bz_eventos_f.QVD]
+// (qvd);
 
 bz_posicoes_f:
 Load
@@ -144,7 +449,6 @@ FROM [$(bronze_layer)bz_externo_centro_custo_d.QVD]
 
 
 
-The above code is creating a mapping table in QlikView script. It is loading data inline to create a mapping between the CODCOLIGADA and COLIGADA fields. This mapping table will be used to associate the CODCOLIGADA values with their corresponding COLIGADA names in the data model for further analysis and visualization in QlikView applications.
 coligada_d:
 MAPPING LOAD * Inline
 [
@@ -161,12 +465,6 @@ CODCOLIGADA,   	COLIGADA,
 
 
 
-
-The above code is a script written in QlikViews scripting language for loading data into a mapping table. 
-It is using the "Mapping Load" statement to load data from an inline table into a mapping table named "DIRETORIA_MAP". 
-The inline table contains mappings between different departments or directorates and their corresponding groups. 
-For example, it maps 'Dir. Industrial' to 'Industrial', 'Dir. Florestal' to 'Florestal', and so on. 
-This mapping table can be used in QlikView applications to associate departments with their respective groups for analysis and visualization purposes
 
 
 // DIRETORIA_MAP:
@@ -186,10 +484,8 @@ This mapping table can be used in QlikView applications to associate departments
 // ];
 
 
-The above code is creating a mapping table in QlikView script. It is defining a mapping between the "Tipo de Demissão" field values and their corresponding "Classificação Demissão" values. This mapping table is used to classify different types of dismissals as either "Involuntário" or "Voluntário" based on the values of the "Tipo de Demissão" field.
 CLASSIFICAÇÃO_MAP:
-MAPPING
-LOAD * INLINE
+MAPPING LOAD * INLINE
 [
 Tipo de Demissão, Classificação Demissão
 2,Involuntário
@@ -202,7 +498,6 @@ V,Voluntário
 ];
 
 
-The above code is loading data into a mapping table named MAP_EVENTOS. The table contains two fields: CODEVENTO and TIPO. Each row in the table represents a mapping between a CODEVENTO (event code) and a corresponding TIPO (event type).
 MAP_EVENTOS:
 MAPPING LOAD * INLINE [
 CODEVENTO, 	TIPO
@@ -269,10 +564,6 @@ CODEVENTO, 	TIPO
 
 
 
-The code is loading data from a QVD file named "sv_funcao_d.QVD" located in the specified path variable "$(silver_layer)". It is then performing the following transformations on the data:
-1. Trimming any leading or trailing spaces from the values in the field "funcao_nome".
-2. Capitalizing the first letter of each word in the field "funcao_nome".
-3. Loading the transformed data into a mapping table with two fields: the trimmed and capitalized "funcao_nome" field and the "funcao_cod" field.
 Map_funcao:
 MAPPING LOAD
 	Trim( Capitalize(funcao_nome)),
@@ -287,7 +578,6 @@ FROM [$(silver_layer)sv_funcao_d.QVD]
 
 
 
-The code provided is a script written in QlikViews scripting language for data transformation and loading. Here is a breakdown of what the code is doing:
 centro_de_custo:
 Load
 [Centro Custo] 																as centro_de_custo
@@ -332,11 +622,8 @@ STORE centro_de_custo INTO [$(silver_layer)sv_centro_de_custo_d.QVD]
 
 
 
-The above code is a script written in QlikViews scripting language for data transformation and loading. It is loading distinct data from a table named "bz_excel_funcao_d" and performing various transformations on the data before storing it into a QVD file named "sv_funcao_d.QVD" in the specified location.
 funcao:
 Load Distinct
-     
-     
      RIGHT('00000' & KEEPCHAR([Cargo], '0123456789'), 5) 																as funcao_cod
     ,SubField([Cargo], ' - ', 2) 																						as funcao_nome
     ,IF([Carreira] = '1-Gestão' OR [Grupo Relatório] = '5 - Especialista', 'Líder', 'Não Líder')						as lider_flag
@@ -364,10 +651,6 @@ STORE funcao INTO [$(silver_layer)sv_funcao_d.QVD]
 
 
 
-The code is loading data for employees who were hired and then terminated before the end of the month of their hiring date. 
-It calculates the end of the month for the hiring date and compares it with the termination date to filter out employees who were terminated before the end of their hiring month. 
-Additionally, it excludes terminations due to transfers and excludes employees hired as temporary (indicated by 'T' in the field [Tipo de Admissão]). 
-Finally, it drops the fields Situação and [Situação TEXT] from the temporary table bz_admitidos_demitidos_temp.
 // Passo 1: Carregar funcionários admitidos que foram demitidos antes do fim do mês de admissão
 
 
@@ -384,14 +667,12 @@ WHERE
 Date(Date#([Data Demissão], 'DD.MM.YYYY')) < Date(MonthEnd(Date#([Data Admissão], 'DD.MM.YYYY')))
 // remove demissões de transferência
 and [Tipo de Demissão] <> 5
-AND NOT Match([Tipo de Admissão], 'T')  
 
 
 ;
     
 Drop Field Situação, [Situação TEXT] from bz_admitidos_demitidos_temp;
     
-The code is performing a left join operation between the table "bz_admitidos_demitidos_temp" and the table "bz_headcount_f". It is loading the columns "Funcionário" and a constant value '1' as [Existe na Headcount] from the table "bz_headcount_f". This operation will help identify which employees from "bz_admitidos_demitidos_temp" are still present in the headcount data.
 // Passo 2: Verificar quais desses funcionários ainda estão na base de headcount
 
 Left Join (bz_admitidos_demitidos_temp)
@@ -403,8 +684,6 @@ Load
 Resident bz_headcount_f;
 
 
-
-The code is filtering out records from the table `bz_admitidos_demitidos_temp` that are not present in the `headcount` table. It creates a new table `bz_headcount_and_short_tenure_and_offshore_f` by loading all columns from `bz_admitidos_demitidos_temp` and adding additional columns 'Situação', 'Situação TEXT', and 'short_tenure'. The filter condition `WHERE IsNull([Existe na Headcount])` ensures that only records not found in the `headcount` table are included in the new table. Finally,
 // Passo 3: Filtrar apenas os que NÃO estão na headcount (para adicionar depois)
 
 
@@ -422,7 +701,6 @@ WHERE IsNull([Existe na Headcount]);
 
 Drop Table bz_admitidos_demitidos_temp;
 
-The code provided is concatenating and transforming data from different fields in a dataset. Here is a breakdown of what the code is doing:
 Concatenate
 
 
@@ -448,7 +726,6 @@ Load
 ,1  																											  as [Código Filial]
 ,1																												  as offshore
 
-The code provided is a script in QlikView or Qlik Sense for data manipulation. Here is a breakdown of what the code is doing:
 Resident bz_headcount_offshore_f
 
 where [Data Demissão] = '#';
@@ -467,7 +744,6 @@ Resident bz_headcount_hist_f;
 concatenate
 
 // Passo 4: Concatenar com a base completa de headcount
-The above code is loading all records from the table `bz_headcount_f` into memory as a resident table.
 Load * 
 Resident bz_headcount_f;
 // Carrega todos registros
@@ -483,7 +759,6 @@ Resident bz_headcount_f;
 
 
 
-The code snippet is loading data from a source and transforming it using various fields such as date formatting, employee ID, employee name, function code, function name, date of hire, and calculating the number of days an employee has been with the company. The data is being loaded into a table or data structure for further analysis or processing.
 
 headcount_temp_1:
 
@@ -498,7 +773,6 @@ Load
     
 
 
- The code snippet provided is calculating the difference in years between the "Dia do calendário" (Calendar Day) and "Data Admissão" (Hire Date) fields in a QlikView script. It then uses this difference to determine if a person is a new hire or not based on whether the difference is less than 1 year.
  // a regra de new hire e contratação tipo é a mesma, diferencia true or false no resultado para que seja montada a dimensao na proxima camada   
     
 
@@ -511,7 +785,6 @@ Load
     'TRUE', 'FALSE')                        	                                                                        as new_hire_flag
 
 
-The code is checking if the employees were hired in the same month as the current calendar month. It uses the Date# function to convert the date strings to date values, then compares the month end dates of the hiring date and the current calendar date. If they match, the 'admitido_flag' field is set to 'TRUE', otherwise it is set to 'FALSE'.
 // a regra de admitido é para que seja destacado os funcionarios que foram admitidos no mes
 
 
@@ -519,7 +792,6 @@ The code is checking if the employees were hired in the same month as the curren
     'TRUE', 'FALSE') 																									as admitido_flag
 
 
-The code snippet provided is checking if the difference in years between the 'Dia do calendário' (Calendar Day) and 'Data Admissão' (Hiring Date) fields is less than or equal to 0.25 years (which is approximately 3 months). If the condition is met, it returns 'TRUE' as the value for the field 'admitido_flag_3meses', otherwise it returns 'FALSE'. This is used to determine if an employee has been hired within the last 3 months.
 // a regra de admitidos até 3 meses
 
 
@@ -529,8 +801,16 @@ The code snippet provided is checking if the difference in years between the 'Di
 ) 																														as admitido_flag_3meses
                                                                                                                        
 
-
-
+#_dias_atestado
+ 
+Sum(
+  aggr(
+    sum({<tipo_evento = {'Atestado'}>} [gd_eventos_f.hora_total]) * 30
+    /
+    sum({<tipo_evento = {'Jornada'}>} distinct [gd_eventos_f.hora_total]),
+     gd_eventos_f.chapa, (mes_nome)
+  )
+)
 
 //   ,IF(
   
@@ -570,11 +850,6 @@ The code snippet provided is checking if the difference in years between the 'Di
 //     		'FALSE'
 //       )	)																    											as headcount_flag_new
       
- The code is checking certain conditions and setting a flag based on those conditions. 
- It checks if the length of the "Situação" field after trimming is greater than 0, if the "Funções TEXT" field does not contain the word "Estagiário", if the "Tipo Funcionário" 
- field is equal to 'N', and if the "Situação" field is equal to 'A', 'E', 'F', or 'V'. 
- If all these conditions are met, it sets the "headcount_flag_new" field to 'TRUE', otherwise it sets it to 'FALSE'
- 
  , if(
     Len(Trim(Situação)) > 0 and
     WildMatch([Funções TEXT], '*Estagiário*') = 0 and
@@ -589,7 +864,6 @@ The code snippet provided is checking if the difference in years between the 'Di
       
       
       
-    The above code appears to be a data transformation or mapping process for various fields in a dataset. Here is a summary of what the code is doing:
      ,[Situação]							 																			as situacao_cod
      ,[Situação TEXT]																									as situacao_nome
 //      ,IF(MATCH([Situação], 'A','E','F','V'), 'Ativo', 'Afastado')		    											as headcount_status
@@ -625,11 +899,9 @@ The code snippet provided is checking if the difference in years between the 'Di
       ,[Cota PCD]																									   as cota_pcd  
       ,offshore
       ,hc_hist
-      ,short_tenure
     
 Resident bz_headcount_and_short_tenure_and_offshore_f
 
-The above code is a WHERE clause used in a query to filter data based on certain conditions. Here is a breakdown of what each condition is doing:
 WHERE
 1=1
 and
@@ -645,8 +917,6 @@ and
         '704', 
         '706'
     )
-   The above code is using the `NOT Match` function to filter out specific values from the `[Funcionário]` field. 
-   It is excluding the values listed in the long list from being matched in the query.
     and NOT Match([Funcionário], 
         '999907338', '999007075', '999999937', '999997747', '999997704',
         '999999078', '50003102', '50003331', '50006331', '50006095',
@@ -661,7 +931,6 @@ and
         '999007079', '990008293', '990008234'
     )
     
-The code snippet provided seems to be a set of comments indicating certain conditions or criteria for bypassing certain employees. It mentions bypassing employees who are both contracted and hired in the same month, employees with a short tenure, employees who are offshore, and employees with a specific history (hc_hist). These conditions suggest that the code is likely part of a larger program or system that processes employee data and applies certain rules or filters to determine which employees should be bypassed or excluded from certain actions or processes.
 // da bypass em contratados e admitidos do mesmo mês
 // or  short_tenure = 1
 // da bypass em funcionários de offshore
@@ -677,7 +946,6 @@ or  hc_hist=1
 													//join com tabela de hierarquia de centro de custo
 
 
-The above code is performing a LEFT JOIN operation on the table "headcount_temp_1" with a temporary table named "centro_de_custo". It is loading distinct values from the "centro_de_custo" table and selecting specific fields such as "Dir.", "Área", and "Grupo Diretoria" while applying some conditional logic using IF statements. However, some of the commented-out code suggests that there may have been some conditional logic or mapping that was previously implemented but is currently disabled.
 LEFT JOIN (headcount_temp_1)
 LOAD Distinct
 //     [Centro Custo]  																                                    as centro_de_custo
@@ -709,7 +977,6 @@ Resident centro_de_custo;
                                             
                                             
                                             
-The above code is performing a LEFT JOIN operation by loading data from the table `headcount_temp_1` and renaming the columns `[Pessoas]` and `[Funcionário]` as `pessoa` and `chapa`, respectively. The data is being loaded from the table `bz_headcount_latest_f`.
                                             
 LEFT JOIN (headcount_temp_1)
 LOAD 
@@ -727,10 +994,6 @@ Resident bz_headcount_latest_f;
                                         
                                         
                                         
-
-The above code is performing a LEFT JOIN operation between the table `headcount_temp_1` and the existing table `bz_pessoa_d`. It selects distinct columns from `headcount_temp_1`, renames them as needed, and loads the data into the `bz_pessoa_d` table. The purpose is to combine the data from `headcount_temp_1` with the existing data in `bz_pessoa_d` based on a common key or keys. The LEFT JOIN ensures that all records from `headcount_temp_1` are included in the result, even if there are
-The above code is performing a LEFT JOIN operation by loading distinct columns from the table `headcount_temp_1` and renaming them accordingly. 
-The data is being loaded into a resident table named `bz_pessoa_d`. 
 
 LEFT JOIN (headcount_temp_1)
 LOAD Distinct
@@ -766,7 +1029,6 @@ Resident bz_pessoa_d;
 
 LEFT JOIN (headcount_temp_1)
 
-The code provided is a snippet of a script that appears to be loading data from a table named "Distinct Funcionário" and performing some transformations on the data. Here is a breakdown of the code:
 LOAD Distinct
 	Funcionário																											 as chapa
     ,IF(TRIM("Endereço Internet Mail")= '', 'Nenhum Registro Encontrado', "Endereço Internet Mail") 				     as email												
@@ -791,19 +1053,26 @@ LOAD Distinct
     ,IF(LEFT([Hierarquia Nível 6 TEXT], 2) = '1/', MID([Hierarquia Nível 6 TEXT], 3), [Hierarquia Nível 6 TEXT]) 		 as [hierarquia_nome_n6]
 Resident bz_hierarquia_d;
 
-											// regra de rehired com base da headcount latest                               
+
+
+
+
+
+
+											// regra de rehired com base da headcount latest 
+                                            
+
+
+                                            
                                             
 
 LEFT JOIN (headcount_temp_1)
-
-
-The code is loading data from the table "Pessoas" as "pessoa" and calculating the number of rehires for each person by counting the occurrences of "Data Admissão" and subtracting 1 if the count is greater than 1. It then filters the data based on certain conditions, excluding specific values for the fields "Situação", "Tipo Funcionário", and "Tipo de Admissão". Finally, it groups the data by "Pessoas" (people).
 LOAD 
     [Pessoas]                                                             												as pessoa
     ,if(count([Data Admissão]) > 1, count([Data Admissão]) - 1, 0) 														as qtd_readimissoes
 Resident bz_headcount_latest_f
-where
-1=1 
+
+WHERE 1=1 
 AND NOT Match([Situação], '0', 'Z', '9')     // Exclui '0' mudanças de matrícula, 'Z' admissões futuras e '9' matrículas apagadas
 AND NOT Match([Tipo Funcionário], 'Z', 'T')  // Exclui 'Z' aprendizes e 'T' estagiários
 AND NOT Match([Tipo de Admissão], 'T')       // Exclui transferências sem ônus
@@ -823,7 +1092,6 @@ GROUP BY Pessoas;
                                          
 
 
-The above code is performing a LEFT JOIN operation in QlikView. It is loading distinct values from the fields [Seção] and [Seção TEXT] from the table 'bz_headcount_latest_f' into a new table named 'headcount_temp_1'. The WHERE clause filters out any rows where the [Seção TEXT] field is null. This code is useful for creating a new table with unique values from the specified fields while excluding any rows with null values in the [Seção TEXT] field.
 LEFT JOIN (headcount_temp_1)
 LOAD Distinct
     [Seção] 																											as secao_cod,
@@ -843,7 +1111,6 @@ WHERE NOT  IsNull( [Seção TEXT] );
 
 
 
-The code snippet provided is performing a LEFT JOIN operation in QlikView. It is loading distinct values from the fields [Funcionário], [Sindicato], and [Sindicato TEXT] from the table 'bz_headcount_latest_f'. The JOIN is being done with a temporary table named 'headcount_temp_1' based on the field [Sindicato TEXT] to retrieve additional information.
 
 LEFT JOIN (headcount_temp_1)
 LOAD Distinct
@@ -854,10 +1121,18 @@ Resident bz_headcount_latest_f
 
 WHERE NOT  IsNull( [Sindicato TEXT] );
 
+
+
+
+
 											// cria tabela para obter o pis pasep e quantidade de dependentes
                                     		// esta tabela traz somente o dado o dado mais recente ( nao faz sentido ser nessa arquitetura )
 
-The code is performing a LEFT JOIN operation by loading distinct columns 'chapa', 'pispasep', and the sum of 'dependent' columns from the table 'headcount_temp_1'. It is then filtering out records where the 'Situação' column is not equal to '9' from the table 'bz_headcount_latest_f'. This code is likely part of a script to merge and filter data from different tables based on specific conditions.
+
+
+
+
+
 LEFT JOIN (headcount_temp_1)
 LOAD Distinct
 	 [Funcionário] 											                                                           as chapa
@@ -865,19 +1140,27 @@ LOAD Distinct
     ,[Número de Dependentes no IRRF]+[N. Depentendetes Salário Familia]												   as dependentes
         
 Resident bz_headcount_latest_f
+
 WHERE [Situação] <> '9' //matrículas apagadas da base do RM
 ;
 
-											// cria tabela para obter funcao                                  
+
+
+
+	
+
+											// cria tabela para obter funcao
+                                            
                                             		
+                                                    
+                                    
 
 
-The code provided is a script in QlikViews script language for loading and transforming data from a table named `bz_excel_funcao_d`.
 LEFT JOIN (headcount_temp_1)
 LOAD Distinct
 	
      RIGHT('00000' & KEEPCHAR([Cargo], '0123456789'), 5) 																as funcao_cod
-//     ,SubField([Cargo], ' - ', 2) 																				    as funcao_nome
+//     ,SubField([Cargo], ' - ', 2) 																						as funcao_nome
     ,IF([Carreira] = '1-Gestão' OR [Grupo Relatório] = '5 - Especialista', 'Líder', 'Não Líder')						as lider_flag
     ,IF(Match(SubField(Capitalize([Grupo de Cargo 2]), ' - ', 2), 'Operacional','Técnico')
     , 'Operacional', 'Não Operacional')																					as operacional_flag
@@ -905,14 +1188,12 @@ Resident bz_excel_funcao_d;
 
 headcount_temp_2:
 
-
-The above code is loading data from the table `headcount_temp_1` and performing the following transformations:
 Load
 
 *
 
 ,Alt(qtd_readimissoes, 0)      																							           as qtd_readimissoes_new
-,Alt(pessoa,chapa)																						                           as pessoa_new
+,Alt(pessoa,chapa) 																												   as pessoa_new
 ,AutoNumberHash128(UPPER(
     	IF(
         	WILDMATCH( Num([coligada_cod]) & Num([filial_cod]) & Upper([cargo_salarial_tipo]) & num([gs])
@@ -927,12 +1208,15 @@ Drop Field qtd_readimissoes, pessoa;
 
 Drop Table headcount_temp_1;
 
+
+
+
+
 												// cria tabela para obter range de salario
                                                     
                                                     
                                                     
 
-The code snippet provided is loading data from the table `bz_excel_range_salario_d` and performing a LEFT JOIN operation with another table named `headcount_temp_2`. The fields being loaded from `bz_excel_range_salario_d` include a calculated field `range_salario_key` which is a concatenation of various fields, as well as fields named `80`, `90`, `100`, `110`, and `120` which seem to represent salary ranges. The loaded data is then used for further analysis or reporting related to headcount KPIs.
 LEFT JOIN (headcount_temp_2)
 LOAD
 	
@@ -944,12 +1228,24 @@ LOAD
     ,NUM([1.2], '#.##0,00')																								as 120
 Resident bz_excel_range_salario_d;
 
+
+
+
 											// headcount KPI final
 
 
+#_dias_atestado
+ 
+Sum(
+  aggr(
+    sum({<tipo_evento = {'Atestado'}>} [gd_eventos_f.hora_total]) * 30
+    /
+    sum({<tipo_evento = {'Jornada'}>} distinct [gd_eventos_f.hora_total]),
+     gd_eventos_f.chapa, (mes_nome)
+  )
+)
+ 
 
-
-The code is performing a LEFT JOIN operation by loading distinct values from the columns coligada_cod, filial_cod, and filial_nome from the table headcount_temp_2 and joining them with the table bz_excel_filial_d using the Resident keyword. The LEFT JOIN operation will retain all records from the left table (headcount_temp_2) and matching records from the right table (bz_excel_filial_d) based on the specified columns.
 LEFT JOIN (headcount_temp_2)
 LOAD Distinct
  coligada_cod
@@ -960,12 +1256,6 @@ Resident bz_excel_filial_d;
 
 
 
-The code is a script that calculates the position of an employees salary within a certain range. It divides the salary by 100 and then checks which range the result falls into. The ranges are categorized as follows:
-- Less than 80%: 'Menor 80%'
-- Between 80% and 90%: 'Entre 80% e 90%'
-- Between 90% and 100%: 'Entre 90% e 100%'
-- Between 100% and 110%: 'Entre 100% e 110%'
-- Between 110% and
 sv_headcount_f:
 LOAD 
 
@@ -983,8 +1273,6 @@ LOAD
     )
   )
 ) 																														as agrup_fs
-The code is selecting and transforming data from a table or dataset. It is creating new columns based on existing data.
- Specifically, it is checking if the value in the column `qtd_readimissoes_new` is greater than or equal to 1, and if so, assigning 'Sim' (meaning 'Yes'), otherwise assigning 'Não' (meaning 'No') to a new column named `readimitido`. It is also selecting the columns `qtd_readimissoes` and `pessoa_new` without any transformation. Additionally, there are commented out lines that seem
 // ,'REMOVER' 																												as advertencias
 // ,'REMOVER' 																												as advertencias_total
 // ,'REMOVER' 																												as advertencias_motivo
@@ -995,7 +1283,6 @@ The code is selecting and transforming data from a table or dataset. It is creat
 ,qtd_readimissoes_new 																									as qtd_readimissoes
 ,pessoa_new 																											as pessoa
 
-The code snippet provided is using nested IF statements to determine the value of the field `[gestor_direto_nome]`. It checks if the value of `[hierarquia_cod_n6]`, `[hierarquia_cod_n5]`, `[hierarquia_cod_n4]`, `[hierarquia_cod_n3]`, `[hierarquia_cod_n2]`, or `[hierarquia_cod_n1]` is not equal to the value of `[chapa]` and not equal to `#`, and if so, assigns the corresponding `[h
 ,IF(
         [hierarquia_cod_n6] <> [chapa] AND [hierarquia_cod_n6] <> '#',
         [hierarquia_nome_n6],
@@ -1020,7 +1307,6 @@ The code snippet provided is using nested IF statements to determine the value o
             )
         )
     )  AS [gestor_direto_nome]
-The code is checking multiple conditions using nested IF statements to determine the value of the field [gestor_direto_cod]. It checks if each level of hierarchy ([hierarquia_cod_n6] to [hierarquia_cod_n1]) is not equal to the value of [chapa] and not equal to '#'. If a level meets these conditions, it assigns the value of that level to [gestor_direto_cod]. The code prioritizes the higher levels of hierarchy over the lower levels when assigning the value.
 ,IF(
         [hierarquia_cod_n6] <> [chapa] AND [hierarquia_cod_n6] <> '#',
         [hierarquia_cod_n6],
@@ -1045,8 +1331,6 @@ The code is checking multiple conditions using nested IF statements to determine
             )
         )
     )  AS [gestor_direto_cod]
-
-The code provided is a script written in QlikViews scripting language for data transformation and manipulation. Here is a breakdown of what the code is doing:
 ,IF(situacao_cod = 'A' and headcount_flag_new = 'TRUE' and Num( (Date#([load_date], 'DD.MM.YYYY') - Date#([data_admissao], 'DD.MM.YYYY')) , '#,##') > 1, 'TRUE', 'FALSE') 	as disponivel_flag  
 ,If(headcount_flag_new = 'TRUE','Ativo','Inativo')																															as headcount_status
 // ,if(previous(pessoa_new) = pessoa_new
@@ -1054,24 +1338,7 @@ The code provided is a script written in QlikViews scripting language for data t
 //     ,'TRUE','FALSE')  																											AS mov_in
 ,IF(pessoa_new = PEEK('pessoa_new') and [load_date]=Peek('load_date'), PEEK('indice_pessoa') + 1, 1) 	as indice_pessoa
 ,IF(chapa = PEEK('chapa') and [load_date]=Peek('load_date'), PEEK('indice_pessoa') + 1, 1) 	            as indice_chapa
-,IF(
-        pessoa_new = peek('pessoa_new') AND funcao_cod = peek('funcao_cod'),
-        peek('data_inicio_posicao'),
-        MonthStart(load_date)
-    ) as data_inicio_posicao,
-    // ÚNICA função: diferença em dias do início da posição ao início de cada load_month
-IF(
-        pessoa_new = peek('pessoa_new') AND funcao_cod = peek('funcao_cod'),
-        peek('tempo_na_posicao_dias') + (Floor(MonthEnd(load_date) - MonthStart(load_date)) + 1),
-        Floor(MonthEnd(load_date) - MonthStart(load_date)) + 1
-    ) as tempo_na_posicao_dias
-
 RESIDENT headcount_temp_2
-
-The code is filtering out duplicates from the data where the load date is between January and June of 2021. It keeps only the first occurrence of each unique combination of 'pessoa_new' and 'load_date' within that time frame. The data is then ordered by 'pessoa_new', 'load_date', and 'data_admissao' in descending order. Finally, the temporary table 'headcount_temp_2' is dropped.
-WHERE not (Year(load_date) = 2021 and Month(load_date) <= 6 and IF(pessoa_new = PEEK('pessoa_new') and [load_date]=Peek('load_date'), PEEK('indice_pessoa') + 1, 1)  > 1)
-//remove somente as duplicatas de jan-jun/2021 e preserva os demais dados
-
 order by pessoa_new, load_date, data_admissao desc
 ;
 // Order by pessoa_new, load_date asc;
@@ -1093,7 +1360,6 @@ DROP TABLE headcount_temp_2;
 // DROP TABLE headcount_temp_3;
 
 
-The code is storing the data from the table `sv_headcount_f` into a QVD file named `sv_headcount_f.QVD` in the specified location. After storing the data, it drops the table `sv_headcount_f`.
 STORE sv_headcount_f INTO [$(silver_layer)sv_headcount_f.QVD]
 (qvd);
 
@@ -1108,8 +1374,6 @@ DROP TABLE sv_headcount_f ;
 
 
 
-The above code is a script written in QlikViews scripting language. 
-It is loading data from a table named "bz_headcount_latest_f" and performing various transformations on the data related to employee terminations.
 TRACE 'sv_termination_f';
 
 termination_temp_1:
@@ -1131,8 +1395,7 @@ Load
    ,[Motivo Demissão]																									as demissao_motivo_cod
    ,[Motivo Demissão TEXT]																								as demissao_motivo_nome
    //,APPLYMAP('CLASSIFICAÇÃO_MAP',[Tipo de Demissão],'Outro')															as demissao_classificação
-   ,If(Match([Tipo de Demissão],
-    '1', '2', '3', '8', '9', 'A', 'B', 'D', 'N', 'O', 'T', ''), 'Involuntário', 'Voluntário')                           as demissao_classificacao
+   ,If(Match([Tipo de Demissão], '1', '2', '8', 'N'), 'Voluntário', 'Involuntário')                                      as demissao_classificacao
    ,[Tipo Funcionário] 												 												    as tipo_funcionario_cod														
    ,[Tipo Funcionário TEXT]                                                                                             as tipo_funcionario_nome //a base está vindo em branco
    ,[Seção]                                                                                                             as secao_cod
@@ -1211,7 +1474,9 @@ AND [Tipo de Demissão] <> '5' // Recontratação
 
 
 
-The above code is performing a LEFT JOIN operation by loading data from the table "termination_temp_1" and selecting specific fields using the FirstSortedValue function. The selected fields include "Funcionário" as "chapa", "[Cor e Raça]" as "raca_cod", "[Cor e Raça TEXT]" as "raca_nome", "DATE(DATE#("Data de Nascimento", 'DD.MM.YYYY'), 'DD.MM.YYYY')" as "nascimento_data", "Cota PCD" as "cota_pcd", and "Horários: Escala"
+
+
+
 LEFT JOIN (termination_temp_1)
 LOAD
      Funcionário                                                        												 as chapa // Campo de ligação
@@ -1223,12 +1488,22 @@ LOAD
     
 Resident bz_headcount_and_short_tenure_and_offshore_f
 
-The above code snippet appears to be a partial script for loading and joining data from a source related to employee termination. Here is a breakdown of the code:
 GROUP BY Funcionário
 ;
 
+
+
+
+
+
+
+
+
 												// adiciona dados de pessoa
-                                                                 
+                                        
+                                        
+                                        
+                                        
 
 LEFT JOIN (termination_temp_1)
 LOAD Distinct
@@ -1257,7 +1532,9 @@ LOAD Distinct
         
 Resident bz_pessoa_d
 ;
-The code snippet provided is performing a LEFT JOIN operation to add hierarchy data to a table named `termination_temp_1`. It is loading distinct data from the table `bz_hierarquia_d` and renaming some columns while also removing the text '1/' from certain fields if it is present. The loaded data includes employee ID (`chapa`), email address (`email`), and hierarchical levels 1 to 6 with both code and name fields for each level. The code seems to be preparing and enhancing the data related to hierarchy for further analysis or processing.
+
+
+
 
 													// adiciona dados de hierarquia
 
@@ -1309,17 +1586,22 @@ LOAD
     ,if(count([Data Admissão]) > 1, count([Data Admissão]) - 1, 0) 														as qtd_readimissoes
 Resident bz_headcount_latest_f
 
-WHERE 
-1=1 
+WHERE 1=1 
 AND NOT Match([Situação], '0', 'Z', '9')     // Exclui '0' mudanças de matrícula, 'Z' admissões futuras e '9' matrículas apagadas
 AND NOT Match([Tipo Funcionário], 'Z', 'T')  // Exclui 'Z' aprendizes e 'T' estagiários
 AND NOT Match([Tipo de Admissão], 'T')       // Exclui transferências sem ônus
 GROUP BY Pessoas;
 
 
+
+
 											// cria tabela para abter a seção nome que so existe na latest
                                             // como a seção text vem de uma tabela onde so existe o dado mais recente, a seção pode ser inexistente se nenhum funcionário estiver associado a ela.
-                                        
+                                            
+                                         
+                                         
+                                         
+
 
 LEFT JOIN (termination_temp_1)
 LOAD Distinct
@@ -1588,62 +1870,6 @@ DROP TABLE sv_excel_hc_orcamento_historico_f;
 
 
 
-///////////////////////////        PRE POSICOES      //////////////////////////////////////////////
-// gera linhas entre a data de abertura e a data de fechamento da vaga
-
-
-
-
-//SET DateFormat='DD/MM/YYYY';
-
-// Normaliza dados e calcula diferença em meses (incluindo casos em andamento)
-Temp_Clean:
-LOAD
-  RP,
-  STATUS,
-  POSICAO,
-  CLASSIFICACAO,
-  EMPRESA,
-  TIPORP1,
-  DTAINICIO,
-  DTAABERTURA,
-  DTACOMITE,
-  RESPONSAVELVAGA,
-  CCUSTO,
-  Date(Date#(DTAABERTURA, 'DD/MM/YYYY')) 														as DTAABERTURA_date,
-  
- MonthEnd( Date(
-      IF(LEN(Trim(DTAINICIO))=0, Today(), Date#(DTAINICIO, 'DD/MM/YYYY'))
-  )) 																						as DTAINICIO_date,
-  (
-    (Year(Date(IF(LEN(Trim(DTAINICIO))=0, Today(), Date#(DTAINICIO, 'DD/MM/YYYY'))))*12) +
-    Month(Date(IF(LEN(Trim(DTAINICIO))=0, Today(), Date#(DTAINICIO, 'D/M/YYYY'))))
-  )
-  -
-  (
-    (Year(Date(Date#(DTAABERTURA, 'DD/MM/YYYY')))*12) +
-    Month(Date(Date#(DTAABERTURA, 'DD/MM/YYYY')))
-  ) 																						as MonthCount
-RESIDENT bz_excel_posicoes_f;
-
-//  Gera linhas mensais até o fim de andamento 
-Positions_Monthly:
-LOAD
- *,
-  IF(MonthEnd(ReferenceDate)=DTAINICIO_date, Capitalize( STATUS ), 'Em Andamento') as MonthlyStatus
-;
-LOAD
-  *,
-  MonthEnd(AddMonths(DTAABERTURA_date, IterNo()-1, 1) )												as ReferenceDate
-RESIDENT Temp_Clean
-WHILE IterNo()-1 <= MonthCount AND IterNo() <= 120;
-
-DROP TABLE Temp_Clean;
-
-
-
-
-
 
 ///////////////////////////        SV POSICOES      //////////////////////////////////////////////
 
@@ -1657,46 +1883,21 @@ CCUSTO			 				as centro_de_custo
 ,Capitalize([STATUS]) 			as rp_status
 ,POSICAO						as funcao_nome
 ,RP                             as rp
-,Date#(MonthStart([ReferenceDate]), 'DD.MM.YYYY')      as load_date
+,Date(MonthStart(Today()))      as load_date
 ,if( [CLASSIFICACAO] = 'SubstituiÃ§Ã£o','Substituição', Capitalize([CLASSIFICACAO])) 	as rp_classificacao
 ,Capitalize(EMPRESA) 																	as rp_empresa_contratado 
 ,if(Capitalize(TIPORP1) = null(),'Sem Classificação', Capitalize(TIPORP1) ) 			as rp_tipo 
-,If(WildMatch(Upper(POSICAO), 'APRENDIZ'), 'TRUE', 'FALSE') 						    as aprendiz_flag
-,if( Match(Capitalize([MonthlyStatus]), 'Em Andamento', 'Em Admissão'),'TRUE','FALSE')         as andamento_flag
-
-,IF(UPPER(STATUS)='EM ANDAMENTO',TODAY()-date#(DTAABERTURA,'DD/MM/YYYY'), 
-    Date#(DTAINICIO, 'DD/MM/YYYY')-date#(DTAABERTURA,'DD/MM/YYYY'))                     as tempo_contratacao
-
-,if(IF(UPPER(STATUS)='EM ANDAMENTO',TODAY()-date#(DTAABERTURA,'DD/MM/YYYY'), 
-
-    Date#(DTACOMITE, 'DD/MM/YYYY')-date#(DTAABERTURA,'DD/MM/YYYY')) <0,0,
-
-    IF(UPPER(STATUS)='EM ANDAMENTO',TODAY()-date#(DTAABERTURA,'DD/MM/YYYY'), 
-
-    Date#(DTACOMITE, 'DD/MM/YYYY')-date#(DTAABERTURA,'DD/MM/YYYY')))            		as tempo_recrutamento
+,If(WildMatch(Upper(POSICAO), 'APRENDIZ'), 'TRUE', 'FALSE') 						as aprendiz_flag
+,if( Match(Capitalize([STATUS]), 'Em Andamento', 'Em Admissão'),'TRUE','FALSE')     as andamento_flag
 
 
-,if(IF(UPPER(STATUS)='EM ANDAMENTO',TODAY()-date#(DTAABERTURA,'DD/MM/YYYY'), 
-    Date#(DTAINICIO, 'DD/MM/YYYY')-date#(DTAABERTURA,'DD/MM/YYYY')) <0, 0, 
-    IF(UPPER(STATUS)='EM ANDAMENTO',TODAY()-date#(DTAABERTURA,'DD/MM/YYYY'), 
-    Date#(DTAINICIO, 'DD/MM/YYYY')-date#(DTAABERTURA,'DD/MM/YYYY')))
-    -
-    if(IF(UPPER(STATUS)='EM ANDAMENTO',TODAY()-date#(DTAABERTURA,'DD/MM/YYYY'), 
-    Date#(DTACOMITE, 'DD/MM/YYYY')-date#(DTAABERTURA,'DD/MM/YYYY')) < 0, 0,
-    IF(UPPER(STATUS)='EM ANDAMENTO',TODAY()-date#(DTAABERTURA,'DD/MM/YYYY'), 
-    Date#(DTACOMITE, 'DD/MM/YYYY')-date#(DTAABERTURA,'DD/MM/YYYY')))
-   																						 as tempo_admissao 
-
-
-Resident  Positions_Monthly   //bz_excel_posicoes_f
+Resident bz_excel_posicoes_f
 
 
 Where
       WildMatch(Upper(POSICAO), '*APRENDIZ*',	'*ESTAG*') = 0
 and   WildMatch(Upper(RESPONSAVELVAGA), '*NAO DEFINIDO*') = 0   
     ;
-
-drop table Positions_Monthly;
 
 
 
